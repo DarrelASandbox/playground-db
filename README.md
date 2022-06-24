@@ -113,3 +113,24 @@
 ---
 
 &nbsp;
+
+## Mid Course Project
+
+- <b>Scenario: </b>A new client, the owner of the Maven Movies DVD rental business, has reached out to you for help restructuring their non-normalized database.
+- <b>Objective: </b>Use Your MySQL Database Administration skills to: Design a better set of tables to store the data in the existing schema. Explain to the owner why the current system is not optimized for scale, and how you propose to improve it. Then, create a new schema with your ideal specifications and populate it with data.
+- <b>Questions: </b>Take a look at the mavenmoviesmini schema.
+  - What do you notice about it?
+  - How many tables are there?
+  - What does the data represent?
+  - What do you think about the current schema?
+  - If you wanted to break out the data from the inventory_non_normalized table into multiple tables, how many tables do you think would be ideal? What would you name those tables?
+  - Based on your answer from question #2, create a new schema with the tables you think will best serve this data set. You can use SQL code or Workbench’s UI tools (whichever you feel more comfortable with).
+  - Next, use the data from the original schema to populate the tables in your newly optimized schema
+  - Make sure your new tables have the proper primary keys defined and that applicable foreign keys are added. Add any constraints you think should apply to the data as well (unique, non-NULL, etc.)
+  - Finally, after doing all of this technical work, write a brief summary of what you have done, in a way that your non-technical client can understand. Communicate what you did, and why your new schema design is better.
+
+&nbsp;
+
+---
+
+&nbsp;
