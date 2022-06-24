@@ -83,3 +83,33 @@
 ---
 
 &nbsp;
+
+## Database Design
+
+- <b>Cardinality</b> refers to the uniqueness of values in a column (or attribute) of a table and is commonly used to describe how two tables relate (one-to-one, one-to-many, or many-to-many).
+- <b>Primary keys</b> are unique
+  - They cannot repeat, so there is only one instance of each primary key value in a column
+- <b>Foreign keys</b> are non-unique
+  - They can repeat, so there may be many instances of each foreign key value in a column
+- We can create a <b>one-to-many</b> relationship by connecting a <b>foreign key</b> in one table to
+  a <b>primary key</b> in another
+
+![mavenfuzzyfactorymini-schema](./diagrams/mavenfuzzyfactorymini-schema.png)
+
+- <b>Normalization</b> is the process of structuring the tables and columns in a relational database to <b>minimize redundancy</b> and <b>preserve data integrity</b>. - Benefits of normalization include:
+  - <b>Eliminating duplicate data</b> (this makes storage and query processing more efficient)
+  - <b>Reducing errors and anomalies</b> (restrictions around data structure help to prevent human errors)
+- <b>Enhanced Entity Relationship (EER) Models</b>
+  - Which tables are in the database
+  - Which columns exist in each table
+  - The data types of the various columns
+  - Primary and foreign keys within tables
+  - Relationship cardinality between tables
+  - Constraints on columns (i.e. Non-NULL)
+- [What do the mysql workbench column icons mean](https://stackoverflow.com/questions/10778561/what-do-the-mysql-workbench-column-icons-mean)
+
+&nbsp;
+
+---
+
+&nbsp;
