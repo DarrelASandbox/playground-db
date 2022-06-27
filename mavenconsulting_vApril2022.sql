@@ -5,6 +5,14 @@ SET global time_zone = '-5:00';
 
 SET SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
+DROP SCHEMA IF EXISTS onlinelearningschool;
+DROP SCHEMA IF EXISTS mavenmoviesmini;
+DROP SCHEMA IF EXISTS mavenfuzzyfactorymini;
+DROP SCHEMA IF EXISTS candystore;
+DROP SCHEMA IF EXISTS candystore_old;
+DROP SCHEMA IF EXISTS sloppyjoes;
+DROP SCHEMA IF EXISTS thriftshop;
+
 CREATE SCHEMA candystore;
 USE candystore;
 

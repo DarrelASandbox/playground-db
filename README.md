@@ -134,3 +134,28 @@
 ---
 
 &nbsp;
+
+## Basic Plus
+
+- Indexes
+- Constraint
+  - Unique
+  - Non-Null
+- Stored Procedures
+- Triggers
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Server Management
+
+- Administration tab -> Management -> Users and Privileges
+
+&nbsp;
+
+---
+
+&nbsp;
