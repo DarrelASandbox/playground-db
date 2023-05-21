@@ -1,0 +1,17 @@
+{
+  "name": "mysql-node-simple-blog-app",
+  "description": "[How To Use MySQL with NodeJS - Blog app](https://www.youtube.com/watch?v=344Zv2m9TYI)",
+  "version": "1.0.0",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "start": "npx nodemon server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3"
+  }
+}
