@@ -9,3 +9,48 @@
 ---
 
 &nbsp;
+
+## Introduction
+
+### Redis
+
+- **Why is Redis fast?**
+  - All data is stored in memory
+  - Data is organized in simple data structure
+  - Redis has a simple feature set
+- **Trade-off:** It is more expensive to store in memory
+
+&nbsp;
+
+![memory-vs-hard-drive](diagrams/memory-vs-hard-drive.png)
+
+&nbsp;
+
+![data-structure](diagrams/data-structure.png)
+
+|  Traditional Database Feature Set  | Redis Feature Set |
+| :--------------------------------: | :---------------: |
+|        Enforced data schema        |   ...Not much!    |
+|              Triggers              |                   |
+|      Foreign key constraints       |                   |
+| Uniqueness of arbitrary properties |                   |
+|            SQL Support             |                   |
+|        Transaction rollback        |                   |
+
+### Setup
+
+- [redis.com](https://redis.com/)
+- [rbook](http://rbook.cloud/)
+- Config
+  - `Public endpoint`: `Host` and `Port`
+  - `Default user password`: `Password`
+
+```sh
+SET key value
+```
+
+&nbsp;
+
+---
+
+&nbsp;
