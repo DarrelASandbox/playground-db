@@ -47,7 +47,23 @@
 
 ```sh
 SET key value
+SET message 'Hi there'
+GET message
 ```
+
+### Commands
+
+- [redis.io - Commands](https://redis.io/commands/)
+
+![commands-data-types](diagrams/commands-data-types.png)
+
+&nbsp;
+
+![commands-strings](diagrams/commands-strings.png)
+
+&nbsp;
+
+![commands-getters-setters](diagrams/commands-getters-setters.png)
 
 &nbsp;
 
