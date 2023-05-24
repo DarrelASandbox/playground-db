@@ -67,6 +67,30 @@ GET message
 
 &nbsp;
 
+- Why would we ever want to replace part of a string?
+
+&nbsp;
+
+![traditional-db-problem](diagrams/traditional-db-problem.png)
+
+&nbsp;
+
+![encoding](diagrams/encoding.png)
+
+&nbsp;
+
+![encoded-table](diagrams/encoded-table.png)
+
+&nbsp;
+
+![redis-insert](diagrams/redis-insert.png)
+
+&nbsp;
+
+![redis-operations](diagrams/redis-operations.png)
+
+&nbsp;
+
 ---
 
 &nbsp;
