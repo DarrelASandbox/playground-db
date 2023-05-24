@@ -94,3 +94,27 @@ GET message
 ---
 
 &nbsp;
+
+![commands-numbers](diagrams/commands-numbers.png)
+
+&nbsp;
+
+- Why do these commands exist?
+
+&nbsp;
+
+![two-round-trips](diagrams/two-round-trips.png)
+
+&nbsp;
+
+![concurrent-updates](diagrams/concurrent-updates.png)
+
+&nbsp;
+
+![synchronous-processing](diagrams/synchronous-processing.png)
+
+&nbsp;
+
+---
+
+&nbsp;
