@@ -22,11 +22,11 @@
 
 &nbsp;
 
-![memory-vs-hard-drive](diagrams/memory-vs-hard-drive.png)
+![memory-vs-hard-drive](00-diagrams/memory-vs-hard-drive.png)
 
 &nbsp;
 
-![data-structure](diagrams/data-structure.png)
+![data-structure](00-diagrams/data-structure.png)
 
 |  Traditional Database Feature Set  | Redis Feature Set |
 | :--------------------------------: | :---------------: |
@@ -55,15 +55,15 @@ GET message
 
 - [redis.io - Commands](https://redis.io/commands/)
 
-![commands-data-types](diagrams/commands-data-types.png)
+![commands-data-types](00-diagrams/commands-data-types.png)
 
 &nbsp;
 
-![commands-strings](diagrams/commands-strings.png)
+![commands-strings](00-diagrams/commands-strings.png)
 
 &nbsp;
 
-![commands-getters-setters](diagrams/commands-getters-setters.png)
+![commands-getters-setters](00-diagrams/commands-getters-setters.png)
 
 &nbsp;
 
@@ -71,23 +71,23 @@ GET message
 
 &nbsp;
 
-![traditional-db-problem](diagrams/traditional-db-problem.png)
+![traditional-db-problem](00-diagrams/traditional-db-problem.png)
 
 &nbsp;
 
-![encoding](diagrams/encoding.png)
+![encoding](00-diagrams/encoding.png)
 
 &nbsp;
 
-![encoded-table](diagrams/encoded-table.png)
+![encoded-table](00-diagrams/encoded-table.png)
 
 &nbsp;
 
-![redis-insert](diagrams/redis-insert.png)
+![redis-insert](00-diagrams/redis-insert.png)
 
 &nbsp;
 
-![redis-operations](diagrams/redis-operations.png)
+![redis-operations](00-diagrams/redis-operations.png)
 
 &nbsp;
 
@@ -95,7 +95,7 @@ GET message
 
 &nbsp;
 
-![commands-numbers](diagrams/commands-numbers.png)
+![commands-numbers](00-diagrams/commands-numbers.png)
 
 &nbsp;
 
@@ -103,15 +103,31 @@ GET message
 
 &nbsp;
 
-![two-round-trips](diagrams/two-round-trips.png)
+![two-round-trips](00-diagrams/two-round-trips.png)
 
 &nbsp;
 
-![concurrent-updates](diagrams/concurrent-updates.png)
+![concurrent-updates](00-diagrams/concurrent-updates.png)
 
 &nbsp;
 
-![synchronous-processing](diagrams/synchronous-processing.png)
+![synchronous-processing](00-diagrams/synchronous-processing.png)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+### 02-rbay
+
+- [redislabs](https://app.redislabs.com/#/)
+
+```.env
+REDIS_HOST=
+REDIS_PORT=
+REDIS_PW=
+```
 
 &nbsp;
 
