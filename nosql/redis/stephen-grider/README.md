@@ -122,12 +122,53 @@ GET message
 ### 02-rbay
 
 - [redislabs](https://app.redislabs.com/#/)
+- [node-redis](https://github.com/redis/node-redis)
 
 ```.env
 REDIS_HOST=
 REDIS_PORT=
 REDIS_PW=
 ```
+
+![sveltekit-server](00-diagrams/sveltekit-server.png)
+
+&nbsp;
+
+![redis-cache-html](00-diagrams/redis-cache-html.png)
+
+&nbsp;
+
+- **SQL Database Design Methodology**
+  - Put the data in tables
+  - Figure out how we will query it
+- **Redis Design Methodology**
+  - Figure out what queries we need to answer
+  - Structure data to best answer those queries
+
+&nbsp;
+
+|               Design Considerations               |                                                     |
+| :-----------------------------------------------: | :-------------------------------------------------: |
+|         What type of data are we storing?         |                       Strings                       |
+|  Should we be concerned about the size of data?   |            YES! Only cache certain pages            |
+|          Do we need to expire this data?          | Yes, expire after some number of minutes/hours/days |
+| What will the key naming policy be for this data? |                     Refer below                     |
+|           Any business-logic concerns?            |                        Nope                         |
+
+- **Key Naming**
+  - Unique
+  - Understandable
+  - Use functions to generate your key names so you never make a typo
+  - Extremely common practice is to use a ':' to separate different parts of the key
+    - users:45
+    - items:19
+    - users:posts:901
+    - posts:jqip25jnm
+  - Small twist on common practice - we are going to use a # before unique ID's to make implementing search easier
+
+&nbsp;
+
+![custom-and-static-pages](00-diagrams/custom-and-static-pages.png)
 
 &nbsp;
 
