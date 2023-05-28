@@ -1,0 +1,35 @@
+{
+  "name": "Hash Commands",
+  "fileName": "My Every House Notebook.json",
+  "createdAt": "2023-05-28T05:28:55.211Z",
+  "cells": [
+    {
+      "id": "88f75891ab6a48b3",
+      "type": "markdown",
+      "content": "**Notes**\n\n* Add some notes here\n* Use markdown"
+    },
+    {
+      "id": "e9c94d32e204f234",
+      "type": "redis",
+      "content": "HSET company name 'Concrete Co' age 1915\n    industry materials revenue 5.3"
+    },
+    { "id": "1685251907034", "type": "redis", "content": "HGET company name" },
+    { "id": "1685251936813", "type": "redis", "content": "HGETALL company" },
+    { "id": "1685252060610", "type": "redis", "content": "HEXISTS company age" },
+    {
+      "id": "1685252162227",
+      "type": "redis",
+      "content": "HDEL company age\nHGETALL company"
+    },
+    { "id": "1685252105111", "type": "redis", "content": "DEL company\nHGETALL company" },
+    {
+      "id": "1685252286090",
+      "type": "redis",
+      "content": "HINCRBY company age 10\nHGETALL company"
+    },
+    { "id": "1685252444829", "type": "redis", "content": "HSTRLEN company name " },
+    { "id": "1685252481234", "type": "redis", "content": "HKEYS company" },
+    { "id": "1685252508206", "type": "redis", "content": "HVALS company" }
+  ],
+  "id": "acd3729933350ceb"
+}
