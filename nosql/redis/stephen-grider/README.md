@@ -176,6 +176,7 @@ REDIS_PW=
   - Must be string
   - key value pair
   - Cannot have **nested** key value pair
+- `npm run sandbox`
 
 &nbsp;
 
