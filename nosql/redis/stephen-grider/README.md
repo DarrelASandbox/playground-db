@@ -172,6 +172,17 @@ REDIS_PW=
 
 &nbsp;
 
+- **Hashes in Redis**
+  - Must be string
+  - key value pair
+  - Cannot have **nested** key value pair
+
+&nbsp;
+
+![commands-hash](00-diagrams/commands-hash.png)
+
+&nbsp;
+
 ---
 
 &nbsp;
