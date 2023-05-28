@@ -184,6 +184,16 @@ REDIS_PW=
 
 &nbsp;
 
+![redis-hset](00-diagrams/redis-hset.png)
+
+&nbsp;
+
+![redis-hgetall](00-diagrams/redis-hgetall.png)
+
+&nbsp;
+
+&nbsp;
+
 ---
 
 &nbsp;

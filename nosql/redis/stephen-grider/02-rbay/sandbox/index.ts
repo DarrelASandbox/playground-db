@@ -2,7 +2,20 @@ import 'dotenv/config';
 import { client } from '../src/services/redis';
 
 const run = async () => {
-	await client.hSet('car', { color: 'red', year: 1915 });
+	await client.hSet('car', {
+		color: 'red',
+		year: 1915,
+
+		// Flatten object structure to make it fit the expected format
+		// or use a different Redis command that can handle more complex object structures
+		engine: { cylinders: 8 },
+
+		// Include `|| ''` to handle null error
+		// TypeError: Cannot read properties of null (reading 'toString')
+		owner: null || '',
+		service: undefined || ''
+	});
+
 	const car = await client.hGetAll('car');
 	console.log(car);
 };
