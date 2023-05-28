@@ -192,6 +192,8 @@ REDIS_PW=
 
 &nbsp;
 
+![response-object-or-null](00-diagrams/response-object-or-null.png)
+
 &nbsp;
 
 ---

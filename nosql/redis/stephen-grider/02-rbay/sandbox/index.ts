@@ -4,19 +4,21 @@ import { client } from '../src/services/redis';
 const run = async () => {
 	await client.hSet('car', {
 		color: 'red',
-		year: 1915,
+		year: 1915
 
 		// Flatten object structure to make it fit the expected format
 		// or use a different Redis command that can handle more complex object structures
-		engine: { cylinders: 8 },
+		// engine: { cylinders: 8 },
 
 		// Include `|| ''` to handle null error
 		// TypeError: Cannot read properties of null (reading 'toString')
-		owner: null || '',
-		service: undefined || ''
+		// owner: null || '',
+		// service: undefined || ''
 	});
 
-	const car = await client.hGetAll('car');
+	const car = await client.hGetAll('car1'); // original key is `car`
+	// Check for empty object instead of if exist because response is not null
+	if (Object.keys(car).length === 0) return console.log('Car not found, respond with 404.');
 	console.log(car);
 };
 run();
