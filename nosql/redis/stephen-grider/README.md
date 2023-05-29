@@ -119,7 +119,7 @@ GET message
 
 &nbsp;
 
-### 02-rbay
+## 02-rbay Part I
 
 - [redislabs](https://app.redislabs.com/#/)
 - [node-redis](https://github.com/redis/node-redis)
@@ -172,6 +172,12 @@ REDIS_PW=
 
 &nbsp;
 
+---
+
+&nbsp;
+
+## Hashes
+
 - **Hashes in Redis**
   - Must be string
   - key value pair
@@ -193,6 +199,76 @@ REDIS_PW=
 &nbsp;
 
 ![response-object-or-null](00-diagrams/response-object-or-null.png)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## 02-rbay Part II
+
+- **Basic Auction Rules**
+  - Users create 'items' to sell
+  - Items have a starting price and an ending time
+  - Other users can 'bid' on an item. A bid must be higher than all previous bids
+  - At the ending time, the user with highest bid wins the item
+- **What queries or changes to data are needed for each page?**
+  - **Landing Page**
+    - Items sorted by price
+    - Items sorted by ending time
+    - Items sorted by views
+    - Search for items by name
+  - **Sign In**
+    - Find a user with given user name
+    - Create a session (auth)
+    - Find a session (auth)
+    - Get a user with a given ID (auth)
+  - **Sign Up**
+    - Create a user
+  - **Item Create**
+    - Create an item
+  - **Item Show**
+    - Fetch an item with a given ID
+    - Find the # of likes tied to an item
+    - Like an item
+    - Unlike an item
+    - See if current user likes an item
+    - Create a bid tied to an item
+    - Find the bid history of an item
+    - Find items similar to an existing item
+    - Increment the number of views for an item
+  - **Seller Profile**
+    - Find items a user likes
+    - Find items two different users both like
+  - **Dashboard**
+    - Find items created by a user, sorted by various criteria
+
+&nbsp;
+
+![reducing-the-design-to-queries](00-diagrams/reducing-the-design-to-queries.png)
+
+&nbsp;
+
+- **"Things" in Our App**
+  - users
+  - sessions
+  - items
+  - bids
+  - views
+  - likes
+- **Which of these should be stored as hashes?**
+  - **Reasons to Store as Hash**
+    - The record has many attributes
+    - A collection of these records have to be sorted many different ways
+    - Often need to access a single record at a time
+    - users, sessions & items
+  - **Don't Use Hashes When...**
+    - The record is only for counting or enforcing uniqueness
+    - Record stores only one or two attributes
+    - Used only for creating relations between different records
+    - The record is only used for time series data
+    - bids, views & likes
 
 &nbsp;
 
