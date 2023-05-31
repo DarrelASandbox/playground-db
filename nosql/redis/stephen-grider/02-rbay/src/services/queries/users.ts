@@ -1,8 +1,25 @@
+import { usersKey } from '$services/keys';
+import { client } from '$services/redis';
 import type { CreateUserAttrs } from '$services/types';
 import { genId } from '$services/utils';
 
 export const getUserByUsername = async (username: string) => {};
 
-export const getUserById = async (id: string) => {};
+export const getUserById = async (id: string) => {
+	const user = await client.hGetAll(usersKey(id));
+	return deserialize(id, user);
+};
 
-export const createUser = async (attrs: CreateUserAttrs) => {};
+export const createUser = async (attrs: CreateUserAttrs) => {
+	const id = genId();
+	// Why do we create a separate object instead of using `attrs`?
+	await client.hSet(usersKey(id), serialize(attrs));
+	return id;
+};
+
+const serialize = (user: CreateUserAttrs) => ({ username: user.username, password: user.password });
+const deserialize = (id: string, user: { [key: string]: string }) => ({
+	id,
+	username: user.username,
+	password: user.password
+});

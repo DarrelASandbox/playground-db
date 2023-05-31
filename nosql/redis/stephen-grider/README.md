@@ -269,6 +269,14 @@ REDIS_PW=
     - Used only for creating relations between different records
     - The record is only used for time series data
     - bids, views & likes
+- **Serialization:**
+  - The process of converting a data structure or object state into a format that can be stored or transmitted and then reconstructed later.
+  - Takes the data we're trying to save, returns a new object with the correct fields + correct values
+- **Deserialization:**
+  - It takes a series of bytes or a string (usually one that was created by serialization), and reconstructs the original data structure or object from it.
+  - Turns strings into numbers
+  - Adds the ID
+  - Turns createdAt into a Date object
 
 &nbsp;
 
