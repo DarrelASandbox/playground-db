@@ -280,6 +280,10 @@ REDIS_PW=
 
 &nbsp;
 
+![session-sign-up](00-diagrams/session-sign-up.png)
+
+&nbsp;
+
 ---
 
 &nbsp;
