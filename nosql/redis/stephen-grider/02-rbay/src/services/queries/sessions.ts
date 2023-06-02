@@ -9,7 +9,10 @@ export const getSession = async (id: string) => {
 	return deserialize(id, session);
 };
 
-export const saveSession = async (session: Session) => {};
+export const saveSession = async (session: Session) =>
+	client.hSet(sessionsKey(session.id), serialize(session));
+
+const serialize = (session: Session) => ({ userId: session.id, username: session.username });
 
 const deserialize = (id: string, session: { [key: string]: string }) => ({
 	id,
