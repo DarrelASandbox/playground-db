@@ -294,3 +294,16 @@ REDIS_PW=
 ---
 
 &nbsp;
+
+## Pipelines
+
+- All the commands we have seen work on a single hash
+- So how do we handle request that requires details about the cars with IDs 553, 601, 789, 419, 950, 15
+  - **Option 1**: Loop over Id's, fetch one at a time (you probably don't want this)
+  - **Option 2**: - Pipelining
+
+&nbsp;
+
+---
+
+&nbsp;
