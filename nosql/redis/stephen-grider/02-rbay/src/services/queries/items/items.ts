@@ -11,7 +11,14 @@ export const getItem = async (id: string) => {
 	return deserialize(id, item);
 };
 
-export const getItems = async (ids: string[]) => {};
+export const getItems = async (ids: string[]) => {
+	const commands = ids.map((id) => client.hGetAll(itemsKey(id)));
+	const results = await Promise.all(commands);
+	return results.map((result, i) => {
+		if (Object.keys(result).length === 0) return null;
+		return deserialize(ids[i], result);
+	});
+};
 
 // `HGETALL items#d9dd15` will return the chair item in rbook
 export const createItem = async (attrs: CreateItemAttrs, userId: string) => {
