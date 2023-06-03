@@ -277,6 +277,13 @@ REDIS_PW=
   - Turns strings into numbers
   - Adds the ID
   - Turns createdAt into a Date object
+- **Date Time Formats**
+  - Redis cannot search for or sort
+    - 1994-11-05T08:15:30-05:00
+    - 'Thu Mar 17 1994 10:56:16 GMT-0500 (Central Daylight Time)'
+  - Unix time. Seconds since Jan 1 1970
+    - 1047132834625
+    - 1047132834625000 (Milliseconds)
 
 &nbsp;
 
