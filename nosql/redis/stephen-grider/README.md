@@ -307,3 +307,21 @@ REDIS_PW=
 ---
 
 &nbsp;
+
+## Sets
+
+&nbsp;
+
+![commands-set](00-diagrams/commands-set.png)
+
+&nbsp;
+
+- **Union**: Return all unique elements from all sets
+- **Intersect**: Return elements that exist in all sets
+- **Diff**: Return elements that exist in the first set, but not any others
+
+&nbsp;
+
+---
+
+&nbsp;

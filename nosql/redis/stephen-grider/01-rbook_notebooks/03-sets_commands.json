@@ -1,0 +1,53 @@
+{
+  "name": "Sets Commands",
+  "fileName": "My Superficial Struggle Notebook.json",
+  "createdAt": "2023-06-04T15:10:16.183Z",
+  "cells": [
+    {
+      "id": "f911459f85600f40",
+      "type": "markdown",
+      "content": "**Notes**\n\n* Add some notes here\n* Use markdown"
+    },
+    { "id": "0df8a96307488ffe", "type": "redis", "content": "SADD colors green" },
+    { "id": "1685891740964", "type": "redis", "content": "SMEMBERS colors " },
+    {
+      "id": "1685891774545",
+      "type": "redis",
+      "content": "SADD colors:1 red blue orange\nSADD colors:2 blue green purple\nSADD colors:3 blue red purple"
+    },
+    {
+      "id": "1685891835159",
+      "type": "redis",
+      "content": "SUNION colors:1 colors:2 colors3 "
+    },
+    {
+      "id": "1685891969677",
+      "type": "redis",
+      "content": "SINTER colors:1 colors:2 colors:3 "
+    },
+    {
+      "id": "1685892184223",
+      "type": "redis",
+      "content": "SDIFF colors:1 colors:2 colors:3 "
+    },
+    {
+      "id": "1685892272356",
+      "type": "redis",
+      "content": "SINTERSTORE colors:results colors:1 colors:2 colors:3"
+    },
+    { "id": "1685892332857", "type": "redis", "content": "SMEMBERS colors:results " },
+    { "id": "1685892449102", "type": "redis", "content": "SISMEMBER colors:1 orange" },
+    {
+      "id": "1685892563323",
+      "type": "redis",
+      "content": "SMISMEMBER colors:1 orange purple blue"
+    },
+    { "id": "1685892635868", "type": "redis", "content": "SCARD colors:1" },
+    { "id": "1685892669084", "type": "redis", "content": "SREM colors:2 blue" },
+    { "id": "1685892736225", "type": "redis", "content": "SISMEMBER colors:2 blue" },
+    { "id": "1685892752905", "type": "redis", "content": "SSCAN colors:1 0 COUNT 2" },
+    { "id": "1685892916075", "type": "redis", "content": "SSCAN colors:3 0 COUNT 4" },
+    { "id": "1685892941602", "type": "redis", "content": "SSCAN colors:3 2 COUNT 1" }
+  ],
+  "id": "d4bce3b49515d8fc"
+}
