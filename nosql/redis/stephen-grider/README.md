@@ -319,6 +319,19 @@ REDIS_PW=
 - **Union**: Return all unique elements from all sets
 - **Intersect**: Return elements that exist in all sets
 - **Diff**: Return elements that exist in the first set, but not any others
+- **Use Cases:**
+  - Enforcing uniqueness of any value
+    - Is the username 'powerseller1' in use? `SISMEMBER usernames powerseller1`
+  - Creating a relationship between different records
+    - Which items do user with ID 45 like? `SMEMBERS users:likes#45`
+  - Finding common attributes between different things
+    - How many items does user with ID 45 like? `SCARD users:likes#45`
+    - Does user with ID 45 like the item with ID 123? `SISMEMBER users:likes#45 123`
+  - General list of elements where order doesn't matter
+    - domains:banned: Set of domains
+      - ezmail.com
+      - freemail.com
+      - scammail.com
 
 &nbsp;
 
