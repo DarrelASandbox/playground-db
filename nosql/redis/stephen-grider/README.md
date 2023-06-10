@@ -1,3 +1,21 @@
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
+- [Introduction](#introduction)
+  - [Redis](#redis)
+  - [Setup](#setup)
+  - [Commands](#commands)
+- [01-rbook_notebooks](#01-rbook_notebooks)
+  - [Hashes](#hashes)
+  - [Pipelines](#pipelines)
+  - [Sets](#sets)
+- [02-rbay](#02-rbay)
+  - [E-Commerce App starter files](#e-commerce-app-starter-files)
+  - [Design Patterns](#design-patterns)
+
+&nbsp;
+
 ## About The Project
 
 - Redis: The Complete Developer's Guide
@@ -119,7 +137,85 @@ GET message
 
 &nbsp;
 
-## 02-rbay Part I
+## 01-rbook_notebooks
+
+### Hashes
+
+- **Hashes in Redis**
+  - Must be string
+  - key value pair
+  - Cannot have **nested** key value pair
+- `npm run sandbox`
+
+&nbsp;
+
+![commands-hash](00-diagrams/commands-hash.png)
+
+&nbsp;
+
+![redis-hset](00-diagrams/redis-hset.png)
+
+&nbsp;
+
+![redis-hgetall](00-diagrams/redis-hgetall.png)
+
+&nbsp;
+
+![response-object-or-null](00-diagrams/response-object-or-null.png)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+### Pipelines
+
+- All the commands we have seen work on a single hash
+- So how do we handle request that requires details about the cars with IDs 553, 601, 789, 419, 950, 15
+  - **Option 1**: Loop over Id's, fetch one at a time (you probably don't want this)
+  - **Option 2**: - Pipelining
+
+&nbsp;
+
+---
+
+&nbsp;
+
+### Sets
+
+&nbsp;
+
+![commands-set](00-diagrams/commands-set.png)
+
+&nbsp;
+
+- **Union**: Return all unique elements from all sets
+- **Intersect**: Return elements that exist in all sets
+- **Diff**: Return elements that exist in the first set, but not any others
+- **Use Cases:**
+  - Enforcing uniqueness of any value
+    - Is the username 'powerseller1' in use? `SISMEMBER usernames powerseller1`
+  - Creating a relationship between different records
+    - Which items do user with ID 45 like? `SMEMBERS users:likes#45`
+  - Finding common attributes between different things
+    - How many items does user with ID 45 like? `SCARD users:likes#45`
+    - Does user with ID 45 like the item with ID 123? `SISMEMBER users:likes#45 123`
+  - General list of elements where order doesn't matter
+    - domains:banned: Set of domains
+      - ezmail.com
+      - freemail.com
+      - scammail.com
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## 02-rbay
+
+### E-Commerce App starter files
 
 - [redislabs](https://app.redislabs.com/#/)
 - [node-redis](https://github.com/redis/node-redis)
@@ -176,37 +272,7 @@ REDIS_PW=
 
 &nbsp;
 
-## Hashes
-
-- **Hashes in Redis**
-  - Must be string
-  - key value pair
-  - Cannot have **nested** key value pair
-- `npm run sandbox`
-
-&nbsp;
-
-![commands-hash](00-diagrams/commands-hash.png)
-
-&nbsp;
-
-![redis-hset](00-diagrams/redis-hset.png)
-
-&nbsp;
-
-![redis-hgetall](00-diagrams/redis-hgetall.png)
-
-&nbsp;
-
-![response-object-or-null](00-diagrams/response-object-or-null.png)
-
-&nbsp;
-
----
-
-&nbsp;
-
-## 02-rbay Part II
+### Design Patterns
 
 - **Basic Auction Rules**
   - Users create 'items' to sell
@@ -288,50 +354,6 @@ REDIS_PW=
 &nbsp;
 
 ![session-sign-up](00-diagrams/session-sign-up.png)
-
-&nbsp;
-
----
-
-&nbsp;
-
-## Pipelines
-
-- All the commands we have seen work on a single hash
-- So how do we handle request that requires details about the cars with IDs 553, 601, 789, 419, 950, 15
-  - **Option 1**: Loop over Id's, fetch one at a time (you probably don't want this)
-  - **Option 2**: - Pipelining
-
-&nbsp;
-
----
-
-&nbsp;
-
-## Sets
-
-&nbsp;
-
-![commands-set](00-diagrams/commands-set.png)
-
-&nbsp;
-
-- **Union**: Return all unique elements from all sets
-- **Intersect**: Return elements that exist in all sets
-- **Diff**: Return elements that exist in the first set, but not any others
-- **Use Cases:**
-  - Enforcing uniqueness of any value
-    - Is the username 'powerseller1' in use? `SISMEMBER usernames powerseller1`
-  - Creating a relationship between different records
-    - Which items do user with ID 45 like? `SMEMBERS users:likes#45`
-  - Finding common attributes between different things
-    - How many items does user with ID 45 like? `SCARD users:likes#45`
-    - Does user with ID 45 like the item with ID 123? `SISMEMBER users:likes#45 123`
-  - General list of elements where order doesn't matter
-    - domains:banned: Set of domains
-      - ezmail.com
-      - freemail.com
-      - scammail.com
 
 &nbsp;
 
