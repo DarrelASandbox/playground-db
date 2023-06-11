@@ -10,6 +10,7 @@
   - [Hashes](#hashes)
   - [Pipelines](#pipelines)
   - [Sets](#sets)
+  - [Sorted Sets](#sorted-sets)
 - [02-rbay](#02-rbay)
   - [E-Commerce App starter files](#e-commerce-app-starter-files)
   - [Design Patterns](#design-patterns)
@@ -206,6 +207,18 @@ GET message
       - ezmail.com
       - freemail.com
       - scammail.com
+
+&nbsp;
+
+---
+
+&nbsp;
+
+### Sorted Sets
+
+&nbsp;
+
+![commands-sorted-set](00-diagrams/commands-sorted-set.png)
 
 &nbsp;
 
