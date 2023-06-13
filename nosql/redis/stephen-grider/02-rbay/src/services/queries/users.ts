@@ -1,4 +1,4 @@
-import { usernamesUniqueKey, usersKey } from '$services/keys';
+import { usernamesKey, usernamesUniqueKey, usersKey } from '$services/keys';
 import { client } from '$services/redis';
 import type { CreateUserAttrs } from '$services/types';
 import { genId } from '$services/utils';
@@ -19,6 +19,16 @@ export const createUser = async (attrs: CreateUserAttrs) => {
 	// Why do we create a separate object instead of using `attrs`?
 	await client.hSet(usersKey(id), serialize(attrs));
 	await client.sAdd(usernamesUniqueKey(), attrs.username);
+
+	// Sorted set requires a number
+	// Convert to number represented with decimal (base 10)
+	// using number represented with hexadecimal (base 16)
+	// to handle id
+	await client.zAdd(usernamesKey(), {
+		value: attrs.username,
+		score: parseInt(id, 16)
+	});
+
 	return id;
 };
 
