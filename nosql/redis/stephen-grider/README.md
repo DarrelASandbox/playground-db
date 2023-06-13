@@ -222,6 +222,20 @@ GET message
 
 &nbsp;
 
+- **Use Cases:**
+  - Tabulating 'the most' or 'the least' of a collection of hashes
+  - Creating relationships between records, sorted by some criteria
+
+&nbsp;
+
+![auth-flow-set](00-diagrams/auth-flow-set.png)
+
+&nbsp;
+
+![auth-flow-sorted-set](00-diagrams/auth-flow-sorted-set.png)
+
+&nbsp;
+
 ---
 
 &nbsp;
