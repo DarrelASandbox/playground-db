@@ -1,4 +1,4 @@
-import { itemsByViewsKey, itemsKey } from '$services/keys';
+import { itemsByEndingAtKey, itemsByViewsKey, itemsKey } from '$services/keys';
 import { client } from '$services/redis';
 import type { CreateItemAttrs } from '$services/types';
 import { genId } from '$services/utils';
@@ -28,7 +28,9 @@ export const createItem = async (attrs: CreateItemAttrs, userId: string) => {
 	// pipelining
 	await Promise.all([
 		client.hSet(itemsKey(id), serialized),
-		client.zAdd(itemsByViewsKey(), { value: id, score: 0 })
+		client.zAdd(itemsByViewsKey(), { value: id, score: 0 }),
+		client.zAdd(itemsByEndingAtKey(), { value: id, score: attrs.endingAt.toMillis() })
 	]);
+
 	return id;
 };
