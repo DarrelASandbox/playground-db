@@ -11,6 +11,8 @@
   - [Pipelines](#pipelines)
   - [Sets](#sets)
   - [Sorted Sets](#sorted-sets)
+  - [Sort](#sort)
+  - [HyperLogLog](#hyperloglog)
 - [02-rbay](#02-rbay)
   - [E-Commerce App starter files](#e-commerce-app-starter-files)
   - [Design Patterns](#design-patterns)
@@ -233,6 +235,39 @@ GET message
 &nbsp;
 
 ![auth-flow-sorted-set](00-diagrams/auth-flow-sorted-set.png)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+### Sort
+
+- Used on sets, sorted sets, and lists
+
+&nbsp;
+
+---
+
+&nbsp;
+
+### HyperLogLog
+
+- Algorithm for _approximately_ counting the number of unique elements
+- Similar to a set, but doesn't store the elements
+- Drawback
+  - 1000 add's, each with a unique value
+  - `PFCOUNT views`
+  - 0.81% error, so 991 to 1008
+
+&nbsp;
+
+![hyperloglog-set-size](00-diagrams/hyperloglog-set-size.png)
+
+&nbsp;
+
+![hyperloglog-size](00-diagrams/hyperloglog-size.png)
 
 &nbsp;
 

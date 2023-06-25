@@ -1,0 +1,19 @@
+{
+  "name": "HyperLogLog Commands",
+  "fileName": "My Slow Suck Notebook.json",
+  "createdAt": "2023-06-25T15:06:03.977Z",
+  "cells": [
+    {
+      "id": "43dcb48468584187",
+      "type": "markdown",
+      "content": "**Notes**\n\n* Add some notes here\n* Use markdown"
+    },
+    {
+      "id": "82d3b893078dc9ec",
+      "type": "redis",
+      "content": "PFADD vegetables celery\nPFADD vegetables potato"
+    },
+    { "id": "1687705709798", "type": "redis", "content": "PFCOUNT vegetables " }
+  ],
+  "id": "499713cf408201f8"
+}
