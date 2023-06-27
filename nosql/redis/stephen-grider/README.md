@@ -13,6 +13,7 @@
   - [Sorted Sets](#sorted-sets)
   - [Sort](#sort)
   - [HyperLogLog](#hyperloglog)
+  - [List](#list)
 - [02-rbay](#02-rbay)
   - [E-Commerce App starter files](#e-commerce-app-starter-files)
   - [Design Patterns](#design-patterns)
@@ -268,6 +269,26 @@ GET message
 &nbsp;
 
 ![hyperloglog-size](00-diagrams/hyperloglog-size.png)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+### List
+
+- Store an ordered list of strings
+- Not an array! Not an array! Not an array!
+- Implemented as a doubly-linked list
+- Often used for time-series data
+- You should probably use this less often than you think
+
+&nbsp;
+
+![commands-lists](00-diagrams/commands-lists.png)
+
+&nbsp;
 
 &nbsp;
 
