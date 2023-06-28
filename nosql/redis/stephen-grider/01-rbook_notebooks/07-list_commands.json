@@ -1,0 +1,57 @@
+{
+  "name": "List Commands",
+  "fileName": "My Lined Camp Notebook.json",
+  "createdAt": "2023-06-27T15:20:34.181Z",
+  "cells": [
+    {
+      "id": "4753ade6020fda05",
+      "type": "markdown",
+      "content": "**Notes**\n\n* Add some notes here\n* Use markdown"
+    },
+    { "id": "501068bea3d84de3", "type": "redis", "content": "LPUSH temps 25" },
+    { "id": "1687879324038", "type": "redis", "content": "RPUSH temps 27" },
+    { "id": "1687879446820", "type": "redis", "content": "LLEN temps " },
+    { "id": "1687879465032", "type": "redis", "content": "LINDEX temps 0 " },
+    { "id": "1687879499062", "type": "redis", "content": "LINDEX temps -1" },
+    {
+      "id": "1687879560882",
+      "type": "redis",
+      "content": "DEL temps\n\nRPUSH temps 30\nRPUSH temps 31\nRPUSH temps 32\nRPUSH temps 33\nRPUSH temps 34\nRPUSH temps 35\nRPUSH temps 35"
+    },
+    { "id": "1687879618311", "type": "redis", "content": "LRANGE temps 0 -1" },
+    { "id": "1687879724905", "type": "redis", "content": "LPOS temps 32 " },
+    { "id": "1687879797748", "type": "redis", "content": "LPOS temps 35 RANK 2" },
+    { "id": "1687879913787", "type": "redis", "content": "LPOS temps 35 COUNT 3" },
+    {
+      "id": "1687966837371",
+      "type": "redis",
+      "content": "DEL temps\n\nRPUSH temps 30\nRPUSH temps 31\nRPUSH temps 32\nRPUSH temps 33\nRPUSH temps 34\nRPUSH temps 35\nRPUSH temps 35\n\nLPOP temps\nLINDEX temps 0 "
+    },
+    {
+      "id": "1687966945434",
+      "type": "redis",
+      "content": "DEL temps\n\nRPUSH temps 30\nRPUSH temps 31\nRPUSH temps 32\nRPUSH temps 33\nRPUSH temps 34\nRPUSH temps 35\nRPUSH temps 35\n\nLSET temps 0 35\nLINDEX temps 0  "
+    },
+    {
+      "id": "1687967043747",
+      "type": "redis",
+      "content": "DEL temps\n\nRPUSH temps 30\nRPUSH temps 31\nRPUSH temps 32\nRPUSH temps 33\nRPUSH temps 34\nRPUSH temps 35\nRPUSH temps 35\n\nLTRIM temps 1 3 \nLINDEX temps 0 \nLINDEX temps -1 "
+    },
+    {
+      "id": "1687967154478",
+      "type": "redis",
+      "content": "DEL temps\n\nRPUSH temps 30\nRPUSH temps 31\nRPUSH temps 32\nRPUSH temps 33\nRPUSH temps 34\nRPUSH temps 35\nRPUSH temps 35\n\nLINSERT temps BEFORE 33 29\nLINDEX temps 3\nLRANGE temps 0 -1 "
+    },
+    {
+      "id": "1687967376199",
+      "type": "redis",
+      "content": "DEL temps\n\nRPUSH temps 30\nRPUSH temps 31\nRPUSH temps 32\nRPUSH temps 33\nRPUSH temps 34\nRPUSH temps 35\nRPUSH temps 35\n\nLINSERT temps AFTER 33 29\nLINDEX temps 3\nLRANGE temps 0 -1 "
+    },
+    {
+      "id": "1687967421034",
+      "type": "redis",
+      "content": "DEL temps\n\nRPUSH temps 30\nRPUSH temps 31\nRPUSH temps 32\nRPUSH temps 33\nRPUSH temps 34\nRPUSH temps 35\nRPUSH temps 35\n\nLREM temps -2 35 \nLRANGE temps 0 -1 "
+    }
+  ],
+  "id": "9c23af825d7e1102"
+}
