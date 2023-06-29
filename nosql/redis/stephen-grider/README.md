@@ -290,6 +290,38 @@ GET message
 
 &nbsp;
 
+- **Use Cases:**
+  - Append-only or prepend-only data (temperature readings, stock values)
+  - When you only need the last/first N values of something
+  - Your data has no sort order besides the order it was inserted
+  - Don't use lists if you have many items AND...
+    - You need to apply some filtering criteria
+    - Your data is sorted by some attribute
+
+&nbsp;
+
+![example-list-book-revieweing-platform](00-diagrams/example-list-book-revieweing-platform.png)
+
+&nbsp;
+
+```redis
+DEL reviews
+
+RPUSH reviews b2
+RPUSH reviews a1
+
+HSET books:a1 title 'Good Book'
+HSET books:b2 title 'Bad Book'
+
+SORT reviews BY nosort GET books:*->title
+```
+
+&nbsp;
+
+![example-list-temperature-station](00-diagrams/example-list-temperature-station.png)
+
+&nbsp;
+
 &nbsp;
 
 ---
