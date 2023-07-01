@@ -472,6 +472,10 @@ REDIS_PW=
 
 &nbsp;
 
+![bids-offset-lrange](00-diagrams/bids-offset-lrange.png)
+
+&nbsp;
+
 ---
 
 &nbsp;
