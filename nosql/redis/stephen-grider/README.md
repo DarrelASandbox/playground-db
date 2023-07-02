@@ -476,6 +476,10 @@ REDIS_PW=
 
 &nbsp;
 
+![bids-creation](00-diagrams/bids-creation.png)
+
+&nbsp;
+
 ---
 
 &nbsp;
