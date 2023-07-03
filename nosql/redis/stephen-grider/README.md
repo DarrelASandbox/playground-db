@@ -17,6 +17,7 @@
 - [02-rbay](#02-rbay)
   - [E-Commerce App starter files](#e-commerce-app-starter-files)
   - [Design Patterns](#design-patterns)
+  - [Concurrency Issue](#concurrency-issue)
 
 &nbsp;
 
@@ -477,6 +478,27 @@ REDIS_PW=
 &nbsp;
 
 ![bids-creation](00-diagrams/bids-creation.png)
+
+&nbsp;
+
+### Concurrency Issue
+
+- Input a number in the `Place a Bid` field
+- Open dev console and focus the arrow on the `Place Bid` button
+- In the console, enter `for (let i = 0; i < 15; i ++ ){$0.click()}`
+- Observe that in the network tab there are responses for 200 and 500
+
+&nbsp;
+
+![bids-concurrency-multiple-requests](00-diagrams/bids-concurrency-multiple-requests.png)
+
+&nbsp;
+
+- **Options for Handling Concurrency**
+  - Use an atomic update command (like HINCRBY or HSETNX)
+  - Use a transaction with the 'WATCH' command
+  - Use a lock
+  - Use a custom LUA update script
 
 &nbsp;
 
