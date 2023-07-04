@@ -497,8 +497,19 @@ REDIS_PW=
 - **Options for Handling Concurrency**
   - Use an atomic update command (like HINCRBY or HSETNX)
   - Use a transaction with the 'WATCH' command
+    - Groups together one or more commands to run sequentially
+    - Hijacks a connection to Redis
+    - Transactions cannot be undone! (Unlike other databases)
   - Use a lock
   - Use a custom LUA update script
+
+&nbsp;
+
+![bids-transactions-watch](00-diagrams/bids-transactions-watch.png)
+
+&nbsp;
+
+![bids-transactions-connection](00-diagrams/bids-transactions-connection.png)
 
 &nbsp;
 

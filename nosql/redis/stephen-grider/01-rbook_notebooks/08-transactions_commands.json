@@ -1,0 +1,18 @@
+{
+  "name": "Transactions Commands",
+  "fileName": "My Educated Dump Notebook.json",
+  "createdAt": "2023-07-04T13:31:35.865Z",
+  "cells": [
+    {
+      "id": "27c7afa367665a76",
+      "type": "markdown",
+      "content": "**Notes**\n\n* Add some notes here\n* Use markdown"
+    },
+    { "id": "1688477757281", "type": "redis", "content": "WATCH color " },
+    { "id": "1688477816731", "type": "redis", "content": "SET color blue" },
+    { "id": "ea718d0c42f50156", "type": "redis", "content": "MULTI" },
+    { "id": "1688477529501", "type": "redis", "content": "SET color red\nSET count 5" },
+    { "id": "1688477528852", "type": "redis", "content": "EXEC" }
+  ],
+  "id": "a0f5928b8817f2cb"
+}
