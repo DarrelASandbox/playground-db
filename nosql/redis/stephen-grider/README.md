@@ -1,6 +1,5 @@
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
 - [Introduction](#introduction)
   - [Redis](#redis)
@@ -18,10 +17,11 @@
   - [E-Commerce App starter files](#e-commerce-app-starter-files)
   - [Design Patterns](#design-patterns)
   - [Concurrency Issue](#concurrency-issue)
+- [Lua Basics](#lua-basics)
 
 &nbsp;
 
-## About The Project
+# About The Project
 
 - Redis: The Complete Developer's Guide
 - Master Redis v7.0 with hands-on exercises. Includes Modules, Scripting, Concurrency, and Streams!
@@ -29,13 +29,9 @@
 
 &nbsp;
 
----
+# Introduction
 
-&nbsp;
-
-## Introduction
-
-### Redis
+## Redis
 
 - **Why is Redis fast?**
   - All data is stored in memory
@@ -60,7 +56,7 @@
 |            SQL Support             |                   |
 |        Transaction rollback        |                   |
 
-### Setup
+## Setup
 
 - [redis.com](https://redis.com/)
 - [rbook](http://rbook.cloud/)
@@ -74,7 +70,7 @@ SET message 'Hi there'
 GET message
 ```
 
-### Commands
+## Commands
 
 - [redis.io - Commands](https://redis.io/commands/)
 
@@ -138,13 +134,9 @@ GET message
 
 &nbsp;
 
----
+# 01-rbook_notebooks
 
-&nbsp;
-
-## 01-rbook_notebooks
-
-### Hashes
+## Hashes
 
 - **Hashes in Redis**
   - Must be string
@@ -174,7 +166,7 @@ GET message
 
 &nbsp;
 
-### Pipelines
+## Pipelines
 
 - All the commands we have seen work on a single hash
 - So how do we handle request that requires details about the cars with IDs 553, 601, 789, 419, 950, 15
@@ -187,7 +179,7 @@ GET message
 
 &nbsp;
 
-### Sets
+## Sets
 
 &nbsp;
 
@@ -218,7 +210,7 @@ GET message
 
 &nbsp;
 
-### Sorted Sets
+## Sorted Sets
 
 &nbsp;
 
@@ -244,7 +236,7 @@ GET message
 
 &nbsp;
 
-### Sort
+## Sort
 
 - Used on sets, sorted sets, and lists
 
@@ -254,7 +246,7 @@ GET message
 
 &nbsp;
 
-### HyperLogLog
+## HyperLogLog
 
 - Algorithm for _approximately_ counting the number of unique elements
 - Similar to a set, but doesn't store the elements
@@ -277,7 +269,7 @@ GET message
 
 &nbsp;
 
-### List
+## List
 
 - Store an ordered list of strings
 - Not an array! Not an array! Not an array!
@@ -323,15 +315,9 @@ SORT reviews BY nosort GET books:*->title
 
 &nbsp;
 
-&nbsp;
+# 02-rbay
 
----
-
-&nbsp;
-
-## 02-rbay
-
-### E-Commerce App starter files
+## E-Commerce App starter files
 
 - [redislabs](https://app.redislabs.com/#/)
 - [node-redis](https://github.com/redis/node-redis)
@@ -388,7 +374,7 @@ REDIS_PW=
 
 &nbsp;
 
-### Design Patterns
+## Design Patterns
 
 - **Basic Auction Rules**
   - Users create 'items' to sell
@@ -481,7 +467,7 @@ REDIS_PW=
 
 &nbsp;
 
-### Concurrency Issue
+## Concurrency Issue
 
 - Input a number in the `Place a Bid` field
 - Open dev console and focus the arrow on the `Place Bid` button
@@ -513,6 +499,39 @@ REDIS_PW=
 
 &nbsp;
 
----
+# Lua Basics
+
+```lua
+print(123) -- 123
+print('hello world') -- hello world
+
+local sum = 1 + 1
+sum = 5
+print(sum) --5
+
+if sum > 0 then
+  print('Sum is greater than 0.')
+end
+
+if sum ~= 0 then
+  print('Sum is NOT greater than 0.')
+end
+
+if sum == 0 then
+  print('Sum is equal to 0.')
+end
+
+if 0 and '' then
+  print('0 is truthy')
+end
+
+if false or not true then
+  print('falsy')
+end
+
+if nil then
+  print("Won't run")
+end
+```
 
 &nbsp;
