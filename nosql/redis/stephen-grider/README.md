@@ -17,7 +17,7 @@
   - [E-Commerce App starter files](#e-commerce-app-starter-files)
   - [Design Patterns](#design-patterns)
   - [Concurrency Issue](#concurrency-issue)
-- [Lua Basics](#lua-basics)
+- [Lua](#lua)
 
 &nbsp;
 
@@ -499,9 +499,10 @@ REDIS_PW=
 
 &nbsp;
 
-# Lua Basics
+# Lua
 
 ```lua
+-- Basics
 print(123) -- 123
 print('hello world') -- hello world
 
@@ -531,6 +532,18 @@ end
 
 if nil then
   print("Won't run")
+end
+
+-- Arrays
+local colors = {'Red', 'Blue', 'Green'}
+print(colors[1]) -- Red
+print(#colors) -- 3
+
+table.insert(colors, 'orange')
+print(#colors) -- 4
+
+for i, v in ipairs(colors) do
+  print(i, v)
 end
 ```
 
