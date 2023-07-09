@@ -545,6 +545,21 @@ print(#colors) -- 4
 for i, v in ipairs(colors) do
   print(i, v)
 end
+
+-- Tables
+for i = 5, 10 do
+  print(i)
+end -- 5, 6, 7, 8, 9, 10
+
+-- Lua table == JS object
+local user = {id = 'a1', name = 'Samantha'}
+print(user['id']) -- a1
+
+for k, v in pairs(user) do
+  print(k, v)
+end
+-- id   a1
+-- name Samantha
 ```
 
 &nbsp;
