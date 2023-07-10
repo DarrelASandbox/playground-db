@@ -1,0 +1,59 @@
+{
+  "name": "Lua Scripts",
+  "fileName": "My Compassionate Definition Notebook.json",
+  "createdAt": "2023-07-10T15:05:20.041Z",
+  "cells": [
+    {
+      "id": "0ffb1c2c851afcad",
+      "type": "markdown",
+      "content": "**Notes**\n\n* Add some notes here\n* Use markdown"
+    },
+    {
+      "id": "78d54e69fabdc52c",
+      "type": "redis",
+      "content": "SCRIPT LOAD 'return 1 + 1' "
+    },
+    {
+      "id": "1689001730681",
+      "type": "redis",
+      "content": "EVALSHA c301e0c5bc3538d2bad3fdbf2e281887e643ada4 0 "
+    },
+    { "id": "1689001781885", "type": "redis", "content": "SCRIPT LOAD 'return 1 + 10' " },
+    {
+      "id": "1689001797272",
+      "type": "redis",
+      "content": "EVALSHA 2ae3514d5e4ae4c481d2b61fb9e4e5719d0db818 0 "
+    },
+    {
+      "id": "1689002334315",
+      "type": "redis",
+      "content": "SCRIPT LOAD 'return 1 + tonumber(ARGV[1]) + tonumber(ARGV[2])'"
+    },
+    {
+      "id": "1689002386450",
+      "type": "redis",
+      "content": "EVALSHA c64fe48b79aa91f6624b133ff9f588642817d8e4 0 '100' 200"
+    },
+    {
+      "id": "1689002891406",
+      "type": "redis",
+      "content": "// Bad practice\nSET color red\nSCRIPT LOAD 'return redis.call(\"GET\", \"color\")'"
+    },
+    {
+      "id": "1689002963515",
+      "type": "redis",
+      "content": "EVALSHA 5c319cc258f79a4a2387edac10122cb4ee3770ea 0"
+    },
+    {
+      "id": "1689003183351",
+      "type": "redis",
+      "content": "// Best practice\n// Redis needs to know exactly which keys we want to access ahead of time\nDEL color purple\nSET color purple\nSCRIPT LOAD 'return redis.call(\"GET\", KEYS[1])'"
+    },
+    {
+      "id": "1689003398569",
+      "type": "redis",
+      "content": "EVALSHA d1ad8397c172dc0a63e271f0c4c4250ca8d5d1fb 1 color"
+    }
+  ],
+  "id": "1ba6bebbd7c4b13e"
+}
