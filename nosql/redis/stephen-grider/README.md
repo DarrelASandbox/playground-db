@@ -13,6 +13,7 @@
   - [Sort](#sort)
   - [HyperLogLog](#hyperloglog)
   - [List](#list)
+  - [Lua Scripts](#lua-scripts)
 - [02-rbay](#02-rbay)
   - [E-Commerce App starter files](#e-commerce-app-starter-files)
   - [Design Patterns](#design-patterns)
@@ -162,20 +163,12 @@ GET message
 
 &nbsp;
 
----
-
-&nbsp;
-
 ## Pipelines
 
 - All the commands we have seen work on a single hash
 - So how do we handle request that requires details about the cars with IDs 553, 601, 789, 419, 950, 15
   - **Option 1**: Loop over Id's, fetch one at a time (you probably don't want this)
   - **Option 2**: - Pipelining
-
-&nbsp;
-
----
 
 &nbsp;
 
@@ -203,10 +196,6 @@ GET message
       - ezmail.com
       - freemail.com
       - scammail.com
-
-&nbsp;
-
----
 
 &nbsp;
 
@@ -242,10 +231,6 @@ GET message
 
 &nbsp;
 
----
-
-&nbsp;
-
 ## HyperLogLog
 
 - Algorithm for _approximately_ counting the number of unique elements
@@ -262,10 +247,6 @@ GET message
 &nbsp;
 
 ![hyperloglog-size](00-diagrams/hyperloglog-size.png)
-
-&nbsp;
-
----
 
 &nbsp;
 
@@ -312,6 +293,20 @@ SORT reviews BY nosort GET books:*->title
 &nbsp;
 
 ![example-list-temperature-station](00-diagrams/example-list-temperature-station.png)
+
+&nbsp;
+
+## Lua Scripts
+
+- **Use Cases:**
+  - Limiting the amount of data exchanged between server + redis
+  - Solving some concurrency issues (more on this later)
+  - Minimizing the number of round trips between server + redis
+- **Drawbacks:**
+  - Keys must be known ahead of time
+  - Tough to test scripts
+  - Loss of language features (E.g. type checking with Typescript)
+  - Another language to deal with (Lua)
 
 &nbsp;
 
