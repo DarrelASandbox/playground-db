@@ -307,6 +307,12 @@ SORT reviews BY nosort GET books:*->title
   - Tough to test scripts
   - Loss of language features (E.g. type checking with Typescript)
   - Another language to deal with (Lua)
+- **Adding a script with Node-Redis**
+  - Name of function
+  - The script itself
+  - \# of keys that will be provided (For the `evalsha` command)
+  - Instructions on how to pass arguments to the script
+  - Instructions on how to parse the response from the script
 
 &nbsp;
 
