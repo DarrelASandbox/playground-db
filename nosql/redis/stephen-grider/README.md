@@ -18,7 +18,8 @@
   - [E-Commerce App starter files](#e-commerce-app-starter-files)
   - [Design Patterns](#design-patterns)
   - [Concurrency Issue](#concurrency-issue)
-- [Lua](#lua)
+- [03-Lua](#03-lua)
+  - [Scripting Design Pattern](#scripting-design-pattern)
 
 &nbsp;
 
@@ -500,7 +501,7 @@ REDIS_PW=
 
 &nbsp;
 
-# Lua
+# 03-Lua
 
 ```lua
 -- Basics
@@ -564,3 +565,10 @@ end
 ```
 
 &nbsp;
+
+## Scripting Design Pattern
+
+- Identify all the keys and arguments you want to access
+- Assign the keys (KEYS) and arguments (ARGV) to well-labeled variables at the top of the script
+- Write your logic
+- Don't forget to return a value if you need to
