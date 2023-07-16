@@ -501,6 +501,16 @@ REDIS_PW=
 
 &nbsp;
 
+- **Issues with `WATCH`**
+
+![concurrency-watch-issue](00-diagrams/concurrency-watch-issue.png)
+
+&nbsp;
+
+![concurrency-testing-setup](00-diagrams/concurrency-testing-setup.png)
+
+&nbsp;
+
 # 03-Lua
 
 ```lua
