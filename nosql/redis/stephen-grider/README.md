@@ -20,6 +20,7 @@
   - [Concurrency Issue](#concurrency-issue)
     - [Issues with `WATCH`](#issues-with-watch)
     - [Overview of a lock](#overview-of-a-lock)
+    - [Redlock algorithm](#redlock-algorithm)
 - [03-Lua](#03-lua)
   - [Scripting Design Pattern](#scripting-design-pattern)
 
@@ -532,6 +533,14 @@ REDIS_PW=
 &nbsp;
 
 ![concurrency-last](00-diagrams/concurrency-last.png)
+
+&nbsp;
+
+### Redlock algorithm
+
+- Our concurrency system will implement a simplified version of the Redlock algorithm
+- On any serious project, use Redlock instead of what we're building here
+- redis.io/docs/reference/patterns/distributed-locks/
 
 &nbsp;
 
