@@ -18,6 +18,8 @@
   - [E-Commerce App starter files](#e-commerce-app-starter-files)
   - [Design Patterns](#design-patterns)
   - [Concurrency Issue](#concurrency-issue)
+    - [Issues with `WATCH`](#issues-with-watch)
+    - [Overview of a lock](#overview-of-a-lock)
 - [03-Lua](#03-lua)
   - [Scripting Design Pattern](#scripting-design-pattern)
 
@@ -501,13 +503,35 @@ REDIS_PW=
 
 &nbsp;
 
-- **Issues with `WATCH`**
+### Issues with `WATCH`
 
 ![concurrency-watch-issue](00-diagrams/concurrency-watch-issue.png)
 
 &nbsp;
 
 ![concurrency-testing-setup](00-diagrams/concurrency-testing-setup.png)
+
+&nbsp;
+
+### Overview of a lock
+
+![concurrency-lock](00-diagrams/concurrency-lock.png)
+
+&nbsp;
+
+![concurrency-set](00-diagrams/concurrency-set.png)
+
+&nbsp;
+
+![concurrency-access](00-diagrams/concurrency-access.png)
+
+&nbsp;
+
+![concurrency-unlock](00-diagrams/concurrency-unlock.png)
+
+&nbsp;
+
+![concurrency-last](00-diagrams/concurrency-last.png)
 
 &nbsp;
 
