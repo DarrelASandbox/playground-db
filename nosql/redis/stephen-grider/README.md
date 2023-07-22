@@ -22,6 +22,7 @@
     - [Overview of a lock](#overview-of-a-lock)
     - [Redlock algorithm](#redlock-algorithm)
     - [Accidental unlock issue](#accidental-unlock-issue)
+    - [Lock expire issue](#lock-expire-issue)
 - [03-Lua](#03-lua)
   - [Scripting Design Pattern](#scripting-design-pattern)
 
@@ -562,6 +563,12 @@ REDIS_PW=
 &nbsp;
 
 ![lock-unlock-script-check](00-diagrams/lock-unlock-script-check.png)
+
+&nbsp;
+
+### Lock expire issue
+
+![lock-expire](00-diagrams/lock-expire.png)
 
 &nbsp;
 
