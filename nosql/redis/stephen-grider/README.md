@@ -14,6 +14,7 @@
   - [HyperLogLog](#hyperloglog)
   - [List](#list)
   - [Lua Scripts](#lua-scripts)
+  - [Modules](#modules)
 - [02-rbay](#02-rbay)
   - [E-Commerce App starter files](#e-commerce-app-starter-files)
   - [Design Patterns](#design-patterns)
@@ -319,6 +320,46 @@ SORT reviews BY nosort GET books:*->title
   - \# of keys that will be provided (For the `evalsha` command)
   - Instructions on how to pass arguments to the script
   - Instructions on how to parse the response from the script
+
+&nbsp;
+
+## Modules
+
+- **Redis Core**
+  - Strings
+  - Sets
+  - Sorted Sets
+  - Hashes
+  - Lists
+  - Hyper-LogLogs
+- **Module**: Additional data structures
+  - **RedisJSON**: JSON storage + manipulation
+  - **RediSearch**: True search + querying
+- **Redis Stack** includes several modules by default
+- Depending on how you deploy your app, you might not be able to use modules!
+  - **Option #1** AWS/Google Cloud runs Redis for you.
+    - AWS: MemoryDB for Redis
+    - Google Cloud: Memorystore
+    - Can't use Redis Modules!!!
+  - **Option #2** Run Redis yourself on a cloud provider
+    - VM/Container You Create
+      - Redis
+      - RedisJSON
+      - RedisSearch
+  - **Option #3** Redis Stack
+    - Redis Labs runs a copy of Redis for you on AWS/GC/Azure with a few modules preinstalled
+    - Redis Labs Manager
+      - Redis
+      - RedisJSON
+      - RedisSearch
+
+|   Redis Stack   |
+| :-------------: |
+|   RediSearch    |
+|    RedisJSON    |
+|   RedisGraph    |
+| RedisTimeSeries |
+|   RedisBloom    |
 
 &nbsp;
 
