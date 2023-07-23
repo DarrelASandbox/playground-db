@@ -4,17 +4,17 @@ import type { Bid, CreateBidAttrs } from '$services/types';
 import { DateTime } from 'luxon';
 import { getItem } from './items';
 
-const pause = (duration: number) => {
-	return new Promise((resolve) => {
-		setTimeout(resolve, duration);
-	});
-};
+// const pause = (duration: number) => {
+// 	return new Promise((resolve) => {
+// 		setTimeout(resolve, duration);
+// 	});
+// };
 
 export const createBid = async (attrs: CreateBidAttrs) => {
-	return withLock(attrs.itemId, async (signal: any) => {
+	return withLock(attrs.itemId, async (lockedClient: typeof client, signal: any) => {
 		const item = await getItem(attrs.itemId);
 
-		await pause(5000);
+		// await pause(5000);
 
 		if (!item) throw new Error('Item does not exist!');
 		if (item.price >= attrs.amount) throw new Error('Bid too low!');
@@ -23,16 +23,14 @@ export const createBid = async (attrs: CreateBidAttrs) => {
 
 		const serialized = serializeHistory(attrs.amount, attrs.createdAt.toMillis());
 
-		if (signal.expired) throw new Error("Lock expired, can't write anymore data.");
-
 		return Promise.all([
-			client.rPush(bidHistoryKey(attrs.itemId), serialized),
-			client.hSet(itemsKey(item.id), {
+			lockedClient.rPush(bidHistoryKey(attrs.itemId), serialized),
+			lockedClient.hSet(itemsKey(item.id), {
 				bids: item.bids + 1,
 				price: attrs.amount,
 				highestBidUserId: attrs.userId
 			}),
-			client.zAdd(itemsByPriceKey(), { value: item.id, score: attrs.amount })
+			lockedClient.zAdd(itemsByPriceKey(), { value: item.id, score: attrs.amount })
 		]);
 	});
 };
