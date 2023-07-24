@@ -361,6 +361,13 @@ SORT reviews BY nosort GET books:*->title
 | RedisTimeSeries |
 |   RedisBloom    |
 
+|                     Querying - TAG                      |                  Searching - TEXT                  |
+| :-----------------------------------------------------: | :------------------------------------------------: |
+|      Get all cars made in 1955 with a color of red      | Get all cars with a name like 'car that goes fast' |
+| Get all cars made before 1960 with a name of 'fast car' |       Get all cars related to '90 blue fast'       |
+|            Get all cars with a color of blue            |         Get all cars related to 'gast var'         |
+|        **Gives the exact results you ask for **         |  **Gives results that best answer your question**  |
+
 &nbsp;
 
 # 02-rbay
