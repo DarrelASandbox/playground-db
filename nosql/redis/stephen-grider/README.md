@@ -368,6 +368,22 @@ SORT reviews BY nosort GET books:*->title
 |            Get all cars with a color of blue            |         Get all cars related to 'gast var'         |
 |        **Gives the exact results you ask for **         |  **Gives results that best answer your question**  |
 
+- **Index Field Types**
+  - **NUMERIC**: This field contains numbers
+  - **GEO**: Geographic coordinates
+  - **VECTOR**: Similarity queries
+  - **TAG**: Used for exact string lookups
+  - **TEXT**: Supports fuzzy search, typos, etc
+- **All 'stop' words are removed from tag and text queries!**
+  - a, is, the, an, and, are, as, at, be, but, by, for, if, in, into, it, no, not, of, on, or, such, that, their, then, there, these, they, this, to, was, will, with
+- **Search queries assume you will break user-supplied text into separate words**
+  - User enters 'super fast cars'
+  - `@name(%super% | %fast% | %cars%)`
+- **Stemming is used to reduce words down to a base form**
+  - [snowballstem](snowballstem.org/demo.html)
+  - User enters 'fasting' or 'fastly' or 'fasts'
+  - Reduced to 'fast'
+
 &nbsp;
 
 # 02-rbay
