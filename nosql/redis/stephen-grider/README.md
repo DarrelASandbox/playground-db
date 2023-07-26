@@ -383,6 +383,8 @@ SORT reviews BY nosort GET books:*->title
   - [snowballstem](snowballstem.org/demo.html)
   - User enters 'fasting' or 'fastly' or 'fasts'
   - Reduced to 'fast'
+- **Fuzzy Search**
+- **Prefix Search**
 
 &nbsp;
 
