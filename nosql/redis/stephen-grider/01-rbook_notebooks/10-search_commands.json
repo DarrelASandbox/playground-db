@@ -1,0 +1,68 @@
+{
+  "name": "Search Commands",
+  "fileName": "My Well-to-do Break Notebook.json",
+  "createdAt": "2023-07-24T16:38:34.502Z",
+  "cells": [
+    {
+      "id": "103b2d9f7fdc8ad9",
+      "type": "markdown",
+      "content": "**Notes**\n\n* Add some notes here\n* Use markdown"
+    },
+    {
+      "id": "c7012a487db6ce14",
+      "type": "redis",
+      "content": "HSET cars#a1 name 'fast car' color red year 1950\nHSET cars#b1 name 'slow car' color red year 1960\nHSET cars#c1 name 'fat car' color blue year 1970\nHSET cars#d1 name 'long car' color blue year 1980"
+    },
+    {
+      "id": "1690216907830",
+      "type": "redis",
+      "content": "FT.CREATE idx:cars ON HASH PREFIX 1 cars#\n    SCHEMA name TEXT year numeric color TAG"
+    },
+    {
+      "id": "1690216991948",
+      "type": "redis",
+      "content": "// Do a text search 'name' \nFT.SEARCH idx:cars '@name:(fast car)'"
+    },
+    {
+      "id": "1690217096383",
+      "type": "redis",
+      "content": "// Do a tag search on 'color'\nFT.SEARCH idx:cars '@color:{blue}'"
+    },
+    {
+      "id": "1690217138212",
+      "type": "redis",
+      "content": "// Do a numeric search on 'year'\nFT.SEARCH idx:cars '@year:[1955 1970]'"
+    },
+    {
+      "id": "1690303343312",
+      "type": "redis",
+      "content": "// Not blue\nFT.SEARCH idx:cars '-@color:{blue}'"
+    },
+    {
+      "id": "1690303401499",
+      "type": "redis",
+      "content": "FT.SEARCH idx:cars '@color:{red | blue}'"
+    },
+    {
+      "id": "1690303597232",
+      "type": "redis",
+      "content": "FT.SEARCH idx:cars '@name:(car)'"
+    },
+    {
+      "id": "1690387953505",
+      "type": "redis",
+      "content": "// Fuzzy Search\n// 1 character mismatch\nFT.SEARCH idx:cars '@name:(%dar%)'"
+    },
+    {
+      "id": "1690388034101",
+      "type": "redis",
+      "content": "// Fuzzy Search\n// 3 characters mismatch\nFT.SEARCH idx:cars '@name:(%%%dddar%%%)'"
+    },
+    {
+      "id": "1690388159593",
+      "type": "redis",
+      "content": "// Prefix Search\n// Minimum 2 characters\nFT.SEARCH idx:cars '@name:(fa*)'"
+    }
+  ],
+  "id": "a65447287f9a1c20"
+}
