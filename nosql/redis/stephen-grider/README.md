@@ -388,6 +388,14 @@ SORT reviews BY nosort GET books:*->title
 
 &nbsp;
 
+![prefix-search-pre-processing](00-diagrams/prefix-search-pre-processing.png)
+
+&nbsp;
+
+![fuzzy-search-pre-processing](00-diagrams/fuzzy-search-pre-processing.png)
+
+&nbsp;
+
 # 02-rbay
 
 ## E-Commerce App starter files
