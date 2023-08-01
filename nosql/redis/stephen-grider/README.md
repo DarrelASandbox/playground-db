@@ -5,7 +5,7 @@
   - [Redis](#redis)
   - [Setup](#setup)
   - [Commands](#commands)
-- [01-rbook_notebooks](#01-rbook_notebooks)
+- [01-rbook\_notebooks](#01-rbook_notebooks)
   - [Hashes](#hashes)
   - [Pipelines](#pipelines)
   - [Sets](#sets)
@@ -15,6 +15,7 @@
   - [List](#list)
   - [Lua Scripts](#lua-scripts)
   - [Modules](#modules)
+    - [TF-IDF Algorithm](#tf-idf-algorithm)
 - [02-rbay](#02-rbay)
   - [E-Commerce App starter files](#e-commerce-app-starter-files)
   - [Design Patterns](#design-patterns)
@@ -395,6 +396,15 @@ SORT reviews BY nosort GET books:*->title
 ![fuzzy-search-pre-processing](00-diagrams/fuzzy-search-pre-processing.png)
 
 &nbsp;
+
+### TF-IDF Algorithm
+
+- 'fruit'
+  - Excellent fruit, good, fantastic, tasty fruit.
+  - Good fruit
+- Term Frequency X Inverse Document Frequency = Score for each string (document)
+- Term Frequency = (# times search term appears in string) / (# total words in string)
+- IDF = log(1 + (# strings / # strings containing the term))
 
 # 02-rbay
 
