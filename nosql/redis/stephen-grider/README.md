@@ -406,6 +406,19 @@ SORT reviews BY nosort GET books:*->title
 - Term Frequency = (# times search term appears in string) / (# total words in string)
 - IDF = log(1 + (# strings / # strings containing the term))
 
+&nbsp;
+
+![tf-idf-good](00-diagrams/tf-idf-good.png)
+
+
+&nbsp;
+
+![tf-idf-weight](00-diagrams/tf-idf-weight.png)
+
+&nbsp;
+
+
+
 # 02-rbay
 
 ## E-Commerce App starter files
