@@ -62,6 +62,22 @@
       "id": "1690388159593",
       "type": "redis",
       "content": "// Prefix Search\n// Minimum 2 characters\nFT.SEARCH idx:cars '@name:(fa*)'"
+    },
+    { "id": "1690627366285", "type": "redis", "content": "FT._LIST" },
+    {
+      "id": "1690994460193",
+      "type": "redis",
+      "content": "FT.EXPLAINCLI idx:items 'chair -desk' "
+    },
+    {
+      "id": "1690994609748",
+      "type": "redis",
+      "content": "FT.EXPLAINCLI idx:items '(@name:(chair)) | (@description:(chair))' "
+    },
+    {
+      "id": "1690994691827",
+      "type": "redis",
+      "content": "// Check the performance of query\nFT.PROFILE idx:items SEARCH QUERY '%%chairs%%' LIMIT 0 0"
     }
   ],
   "id": "a65447287f9a1c20"
