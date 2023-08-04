@@ -5,7 +5,7 @@
   - [Redis](#redis)
   - [Setup](#setup)
   - [Commands](#commands)
-- [01-rbook\_notebooks](#01-rbook_notebooks)
+- [01-rbook_notebooks](#01-rbook_notebooks)
   - [Hashes](#hashes)
   - [Pipelines](#pipelines)
   - [Sets](#sets)
@@ -16,6 +16,7 @@
   - [Lua Scripts](#lua-scripts)
   - [Modules](#modules)
     - [TF-IDF Algorithm](#tf-idf-algorithm)
+    - [RedisSearch](#redissearch)
 - [02-rbay](#02-rbay)
   - [E-Commerce App starter files](#e-commerce-app-starter-files)
   - [Design Patterns](#design-patterns)
@@ -356,7 +357,7 @@ SORT reviews BY nosort GET books:*->title
 
 |   Redis Stack   |
 | :-------------: |
-|   RediSearch    |
+|   RedisSearch   |
 |    RedisJSON    |
 |   RedisGraph    |
 | RedisTimeSeries |
@@ -410,14 +411,19 @@ SORT reviews BY nosort GET books:*->title
 
 ![tf-idf-good](00-diagrams/tf-idf-good.png)
 
-
 &nbsp;
 
 ![tf-idf-weight](00-diagrams/tf-idf-weight.png)
 
 &nbsp;
 
+### RedisSearch
 
+- RediSearch can sort search results
+- Fields that you plan to sort by need to be marked as 'SORTABLE' when index is created
+- Sorting can only be done by one field at a time
+
+&nbsp;
 
 # 02-rbay
 
