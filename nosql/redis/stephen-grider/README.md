@@ -17,6 +17,7 @@
   - [Modules](#modules)
     - [TF-IDF Algorithm](#tf-idf-algorithm)
     - [RedisSearch](#redissearch)
+  - [Streams](#streams)
 - [02-rbay](#02-rbay)
   - [E-Commerce App starter files](#e-commerce-app-starter-files)
   - [Design Patterns](#design-patterns)
@@ -422,6 +423,21 @@ SORT reviews BY nosort GET books:*->title
 - RediSearch can sort search results
 - Fields that you plan to sort by need to be marked as 'SORTABLE' when index is created
 - Sorting can only be done by one field at a time
+
+## Streams
+
+- Kind of like a cross between a list and a sorted set
+- Used for communication between different servers
+- Most useful with 'consumer groups'
+- TONS AND TONS of tiny details
+
+&nbsp;
+
+![streams-producer-consumer](00-diagrams/streams-producer-consumer.png)
+
+&nbsp;
+
+![streams-request-messages](00-diagrams/streams-request-messages.png)
 
 &nbsp;
 
