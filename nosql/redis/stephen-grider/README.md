@@ -441,6 +441,33 @@ SORT reviews BY nosort GET books:*->title
 
 &nbsp;
 
+- `XREAD` $ vs id
+
+![streams-xread-dollar-sign](00-diagrams/streams-xread-dollar-sign.png)
+
+&nbsp;
+
+![streams-problem-1](00-diagrams/streams-problem-1.png)
+
+&nbsp;
+
+![streams-problem-2](00-diagrams/streams-problem-2.png)
+
+&nbsp;
+
+- Each message is sent to only one member of a consumer group
+- Redis keeps track of where it sent each message
+- Each consumer has to 'acknowledge' (ACK) receipt of a message
+- Redis keeps track of what the last delivered message to a stream group is
+
+![streams-consumer-group](00-diagrams/streams-consumer-group.png)
+
+&nbsp;
+
+![streams-stream-log](00-diagrams/streams-stream-log.png)
+
+&nbsp;
+
 # 02-rbay
 
 ## E-Commerce App starter files

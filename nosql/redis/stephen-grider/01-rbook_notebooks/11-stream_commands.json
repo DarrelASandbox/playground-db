@@ -1,0 +1,116 @@
+{
+  "name": "Stream Commands",
+  "fileName": "My Petty Finger Notebook.json",
+  "createdAt": "2023-08-09T22:07:16.780Z",
+  "cells": [
+    {
+      "id": "df1acd2206f4abdf",
+      "type": "markdown",
+      "content": "**Notes**\n\n* Add some notes here\n* Use markdown"
+    },
+    {
+      "id": "2a659b451efed7ff",
+      "type": "redis",
+      "content": "// 1691619009410-0\nXADD fruits * color red name strawberry"
+    },
+    {
+      "id": "1691619013585",
+      "type": "redis",
+      "content": "XREAD STREAMS fruits 1691619009409-0"
+    },
+    {
+      "id": "1691619134932",
+      "type": "redis",
+      "content": "// 1691619150687-0\nXADD fruits * color yellow name banana"
+    },
+    {
+      "id": "1691619174708",
+      "type": "redis",
+      "content": "XREAD COUNT 3 STREAMS fruits 0-0"
+    },
+    {
+      "id": "1691619372011",
+      "type": "redis",
+      "content": "XREAD BLOCK 3000 STREAMS fruits 0-0"
+    },
+    {
+      "id": "1691619579090",
+      "type": "redis",
+      "content": "XREAD BLOCK 3000 STREAMS fruits 0-0"
+    },
+    {
+      "id": "1691619686807",
+      "type": "redis",
+      "content": "// 1691619694494-0\nXADD fruits * color red name apple"
+    },
+    {
+      "id": "1691619701803",
+      "type": "redis",
+      "content": "XREAD COUNT 5 BLOCK 3000 STREAMS fruits 1691619694493-0"
+    },
+    {
+      "id": "1691619870295",
+      "type": "redis",
+      "content": "// 1691619881207-0\nXADD fruits * color yellow name pineapple"
+    },
+    {
+      "id": "1691619909927",
+      "type": "redis",
+      "content": "// $ represents looking for messages right now\nXREAD COUNT 5 BLOCK 3000 STREAMS fruits $"
+    },
+    {
+      "id": "1691621399970",
+      "type": "redis",
+      "content": "XRANGE fruits 1691619881207-0 1691619881208-0"
+    },
+    {
+      "id": "1691621478856",
+      "type": "redis",
+      "content": "// `(` represents not including\nXRANGE fruits (1691619881207-0 1691619881208-0"
+    },
+    {
+      "id": "1691622345804",
+      "type": "redis",
+      "content": "DEL fruits\nXGROUP CREATE fruits fruits-group $ MKSTREAM\nXGROUP CREATECONSUMER fruits fruits-group worker-1\nXGROUP CREATECONSUMER fruits fruits-group worker-2\nXGROUP CREATECONSUMER fruits fruits-group worker-3"
+    },
+    { "id": "1691622477174", "type": "redis", "content": "XINFO GROUPS fruits" },
+    {
+      "id": "1691622802677",
+      "type": "redis",
+      "content": "XINFO CONSUMERS fruits fruits-group "
+    },
+    {
+      "id": "1691622928436",
+      "type": "redis",
+      "content": "DEL fruits\nXGROUP CREATE fruits fruits-group $ MKSTREAM\nXGROUP CREATECONSUMER fruits fruits-group worker-1\nXGROUP CREATECONSUMER fruits fruits-group worker-2\n\n// Hardcoded id for illustration purposes only\nXADD fruits 10-0 name banana color yellow\nXADD fruits 20-0 name apple color red\nXADD fruits 30-0 name orange color orange"
+    },
+    {
+      "id": "1691623152868",
+      "type": "redis",
+      "content": "XREADGROUP GROUP fruits-group worker-1 COUNT 1 STREAMS fruits >"
+    },
+    { "id": "1691623529281", "type": "redis", "content": "XINFO GROUPS fruits" },
+    {
+      "id": "1691623569484",
+      "type": "redis",
+      "content": "XINFO CONSUMERS fruits fruits-group "
+    },
+    {
+      "id": "1691623717712",
+      "type": "redis",
+      "content": "XACK fruits fruits-group 10-0"
+    },
+    { "id": "1691623764858", "type": "redis", "content": "XINFO GROUPS fruits" },
+    {
+      "id": "1691623794787",
+      "type": "redis",
+      "content": "XINFO CONSUMERS fruits fruits-group "
+    },
+    {
+      "id": "1691623841749",
+      "type": "redis",
+      "content": "XAUTOCLAIM fruits fruits-group worker-2 10000 0-0 "
+    }
+  ],
+  "id": "e05c78062178e054"
+}
