@@ -1,6 +1,7 @@
 - [About The Project](#about-the-project)
 - [Introduction](#introduction)
 - [Database Design](#database-design)
+- [Joins \& Aggregations](#joins--aggregations)
 
 &nbsp;
 
@@ -55,3 +56,19 @@
   - Common features (like authentication, comments, etc) are frequently built with conventional table names and columns
   - What type of resources exist in your app? Create aa separate table for each of these features
   - Features that seem to indicate a relationship or ownership between two types of resources need to be reflected in our table design
+
+# Joins & Aggregations
+
+- **The more tables we have, the more interesting questions we can answer**
+  - Find all the comments for the photo with ID = 3, along with the username of the comment author
+  - Find the **average number of comments** per photo
+  - Find the photo with the **most comments** attached to it
+  - Find the photo with ID = 10 and get the **number of comments** attached to it
+  - Find the user with the most activity (most comments + most photos)
+  - Calculate the **average number of characters** per comment
+- **Joins**:
+  - Produces values by merging together rows from different related tables
+  - Use a join most times that you're asked to find data that involves multiple resources
+- **Aggregation**:
+  - Looks at many rows and calculates a single value
+  - Words like **'most'**, **'average'**, **'least'** are a sign that you need to use an aggregation
