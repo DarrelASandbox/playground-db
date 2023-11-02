@@ -72,3 +72,5 @@
 - **Aggregation**:
   - Looks at many rows and calculates a single value
   - Words like **'most'**, **'average'**, **'least'** are a sign that you need to use an aggregation
+
+&nbsp;
