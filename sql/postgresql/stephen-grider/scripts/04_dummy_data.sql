@@ -1,3 +1,6 @@
+-- ==========================
+-- users, photos & comments
+-- ==========================
 CREATE TABLE
   users (id SERIAL PRIMARY KEY, username VARCHAR(50));
 
@@ -352,3 +355,35 @@ VALUES
     3,
     3
   );
+
+-- ==========================
+-- authors & books
+-- ==========================
+CREATE TABLE
+  authors (id INT PRIMARY KEY, name VARCHAR(255) NOT NULL);
+
+INSERT INTO
+  authors (id, name)
+VALUES
+  (1, 'JK Rowling'),
+  (2, 'Stephen King'),
+  (3, 'Agatha Christie'),
+  (4, 'Dr Seuss');
+
+CREATE TABLE
+  books (
+    id INT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    author_id INT,
+    FOREIGN KEY (author_id) REFERENCES authors (id)
+  );
+
+INSERT INTO
+  books (id, title, author_id)
+VALUES
+  (1, 'Chamber of Secrets', 1),
+  (2, 'Prisoner of Azkaban', 1),
+  (3, 'The Dark Tower', 2),
+  (4, 'Murder At the Links', 3),
+  (5, 'Affair at Styles', 3),
+  (6, 'Cat in the Hat', 4);
