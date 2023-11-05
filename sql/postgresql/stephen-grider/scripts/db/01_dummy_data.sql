@@ -409,3 +409,41 @@ VALUES
   (4, 'Murder At the Links', 3),
   (5, 'Affair at Styles', 3),
   (6, 'Cat in the Hat', 4);
+
+-- ==========================
+-- customers & orders
+-- ==========================
+CREATE TABLE
+  purchases (
+    id INT PRIMARY KEY,
+    customer_id INT,
+    product_id INT,
+    paid BOOLEAN
+  );
+
+INSERT INTO
+  purchases (id, customer_id, product_id, paid)
+VALUES
+  (1, 1, 3, TRUE),
+  (2, 3, 3, FALSE),
+  (3, 5, 5, TRUE),
+  (4, 1, 4, TRUE),
+  (5, 4, 2, FALSE),
+  (6, 2, 1, TRUE);
+
+CREATE TABLE
+  customers (
+    id INT PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255)
+  );
+
+INSERT INTO
+  customers (id, first_name, last_name)
+VALUES
+  (1, 'Iva', 'Lindgren'),
+  (2, 'Ignatius', 'Johns'),
+  (3, 'Jannie', 'Boehm'),
+  (4, 'Neal', 'Wehner'),
+  (5, 'Mikayla', 'Casper'),
+  (6, 'Patience', 'Stracke');
