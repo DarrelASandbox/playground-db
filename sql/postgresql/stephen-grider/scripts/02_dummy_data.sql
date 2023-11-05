@@ -1,4 +1,26 @@
 -- ==========================
+-- phones
+-- ==========================
+CREATE TABLE
+  phones (
+    name VARCHAR(255),
+    manufacturer VARCHAR(255),
+    price DECIMAL(10, 2),
+    units_sold INTEGER
+  );
+
+INSERT INTO
+  phones (name, manufacturer, price, units_sold)
+VALUES
+  ('N1280', 'Nokia', 199.00, 1925),
+  ('Iphone 4', 'Apple', 399.00, 9436),
+  ('Galaxy S', 'Samsung', 299.00, 2359),
+  ('S5620 Monte', 'Samsung', 250.00, 2385),
+  ('N8', 'Nokia', 150.00, 7543),
+  ('Droid', 'Motorola', 150.00, 8395),
+  ('Wave S8500', 'Samsung', 175.00, 9259);
+
+-- ==========================
 -- users, photos & comments
 -- ==========================
 CREATE TABLE
