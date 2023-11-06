@@ -2,6 +2,7 @@
 - [Introduction](#introduction)
 - [Database Design](#database-design)
 - [Joins \& Aggregations](#joins--aggregations)
+- [Unions \& Intersections with Sets](#unions--intersections-with-sets)
 
 &nbsp;
 
@@ -72,5 +73,14 @@
 - **Aggregation**:
   - Looks at many rows and calculates a single value
   - Words like **'most'**, **'average'**, **'least'** are a sign that you need to use an aggregation
+
+# Unions & Intersections with Sets
+
+- **`UNION`** - Join together the results of two queries. Remove duplicates
+- **`UNION ALL`** - Join together results of two queries
+- **`INTERSECT`** - Find the rows common in the results of two queries. Remove duplicates
+- **`INTERSECT ALL`** - Find the rows common in the results of two queries
+- **`EXCEPT`** - Find the rows that are present in first query but not second query. Remove duplicates
+- **`EXCEPT ALL`** - Find the rows that are present in first query but not second query
 
 &nbsp;
