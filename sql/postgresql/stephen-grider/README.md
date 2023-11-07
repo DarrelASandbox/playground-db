@@ -3,6 +3,7 @@
 - [Database Design](#database-design)
 - [Joins \& Aggregations](#joins--aggregations)
 - [Unions \& Intersections with Sets](#unions--intersections-with-sets)
+- [Assembling Queries with SubQueries](#assembling-queries-with-subqueries)
 
 &nbsp;
 
@@ -46,6 +47,8 @@
 |              Either an integer or a UUID               |   Exactly equal to the primary key of the referenced row   |
 |                   Will never change                    |          Will change if the relationship changes           |
 
+&nbsp;
+
 # Database Design
 
 - **Database For a Photo-Sharing App**
@@ -57,6 +60,8 @@
   - Common features (like authentication, comments, etc) are frequently built with conventional table names and columns
   - What type of resources exist in your app? Create aa separate table for each of these features
   - Features that seem to indicate a relationship or ownership between two types of resources need to be reflected in our table design
+
+&nbsp;
 
 # Joins & Aggregations
 
@@ -74,6 +79,8 @@
   - Looks at many rows and calculates a single value
   - Words like **'most'**, **'average'**, **'least'** are a sign that you need to use an aggregation
 
+&nbsp;
+
 # Unions & Intersections with Sets
 
 - **`UNION`** - Join together the results of two queries. Remove duplicates
@@ -82,5 +89,15 @@
 - **`INTERSECT ALL`** - Find the rows common in the results of two queries
 - **`EXCEPT`** - Find the rows that are present in first query but not second query. Remove duplicates
 - **`EXCEPT ALL`** - Find the rows that are present in first query but not second query
+
+&nbsp;
+
+# Assembling Queries with SubQueries
+
+![subqueries_source](diagrams/subqueries_source.png)
+
+&nbsp;
+
+![subqueries_operators](diagrams/subqueries_operators.png)
 
 &nbsp;
