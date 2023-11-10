@@ -4,6 +4,8 @@
 - [Joins \& Aggregations](#joins--aggregations)
 - [Unions \& Intersections with Sets](#unions--intersections-with-sets)
 - [Assembling Queries with SubQueries](#assembling-queries-with-subqueries)
+- [PGAdmin](#pgadmin)
+- [PostgreSQL](#postgresql)
 
 &nbsp;
 
@@ -99,5 +101,30 @@
 &nbsp;
 
 ![subqueries_operators](diagrams/subqueries_operators.png)
+
+&nbsp;
+
+# PGAdmin
+
+- Tool to manage and inspect a Postgres database
+- Can connect to local or remote databases
+- Can view/change just about anything in PG
+- A PG Server can contain multiple databases
+- All data for a single app lives in a single DB
+- Having multiple DB's is more about working with more than one app on your machine
+
+&nbsp;
+
+# PostgreSQL
+
+- [Data Types](https://www.postgresql.org/docs/current/datatype.html)
+- [Time Zones](https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-TIMEZONES)
+
+| Data to Store                                                                       | Condition                                                                           | Data Type        |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ---------------- |
+| 'id' column of any table                                                            | -                                                                                   | serial           |
+| Need to store a number without a decimal                                            | -                                                                                   | integer          |
+| Bank balance, grams of gold, scientific calculations                                | Need to store a number with a decimal and this data needs to be very accurate       | numeric          |
+| Kilograms of trash in a landfill, liters of water in a lake, air pressure in a tire | Need to store a number with a decimal and the decimal doesn't make a big difference | double precision |
 
 &nbsp;
