@@ -6,6 +6,7 @@
 - [Assembling Queries with SubQueries](#assembling-queries-with-subqueries)
 - [PGAdmin](#pgadmin)
 - [PostgreSQL](#postgresql)
+  - [Validation](#validation)
 
 &nbsp;
 
@@ -126,5 +127,18 @@
 | Need to store a number without a decimal                                            | -                                                                                   | integer          |
 | Bank balance, grams of gold, scientific calculations                                | Need to store a number with a decimal and this data needs to be very accurate       | numeric          |
 | Kilograms of trash in a landfill, liters of water in a lake, air pressure in a tire | Need to store a number with a decimal and the decimal doesn't make a big difference | double precision |
+
+## Validation
+
+- Row-Level Validation
+- Multi-Column Uniqueness
+- Checks Over Multiple Columns
+- Validation at web server or database?
+
+|                    Web Server                     |                               Database                               |
+| :-----------------------------------------------: | :------------------------------------------------------------------: |
+|     Easier to express more complex validation     | Validation still applied even if you connect with a different client |
+|     Far easier to apply new validation rules      |             Guaranteed that validation is always applied             |
+| Many libraries to handle validation automatically | Can only apply new validation rules if all existing rows satisfy it  |
 
 &nbsp;
