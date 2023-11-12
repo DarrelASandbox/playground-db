@@ -9,6 +9,7 @@
   - [Validation](#validation)
 - [Instagram](#instagram)
   - [Likes](#likes)
+  - [Tags](#tags)
 
 &nbsp;
 
@@ -185,5 +186,16 @@ Add CHECK of (
 - **Using Additional Tables**
   - Each type of like gets its own table
   - Still want to write queries that will count up all likes? You can use a Union or a View
+
+## Tags
+
+![instagram_tag_solution_1](diagrams/instagram_tag_solution_1.png)
+
+&nbsp;
+
+![instagram_tag_solution_2](diagrams/instagram_tag_solution_2.png)
+
+- Do you expect to query for `caption_tags` and `photo_tags` at different rates?
+- Will the meaning of a `photo_tags` change at some point?
 
 &nbsp;
