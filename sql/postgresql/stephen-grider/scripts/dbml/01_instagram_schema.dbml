@@ -23,3 +23,11 @@ Table comments {
   contents VARCHAR(240)
   post_id INTEGER [ref: > posts.id]
 }
+
+Table likes {
+  id SERIAL [pk, increment]
+  created_at TIMESTAMP
+  user_id INTEGER [ref: > users.id]
+  post_id INTEGER [ref: > posts.id]
+  comment_id INTEGER [ref: > comments.id]
+}

@@ -7,6 +7,8 @@
 - [PGAdmin](#pgadmin)
 - [PostgreSQL](#postgresql)
   - [Validation](#validation)
+- [Instagram](#instagram)
+  - [Likes](#likes)
 
 &nbsp;
 
@@ -140,5 +142,48 @@
 |     Easier to express more complex validation     | Validation still applied even if you connect with a different client |
 |     Far easier to apply new validation rules      |             Guaranteed that validation is always applied             |
 | Many libraries to handle validation automatically | Can only apply new validation rules if all existing rows satisfy it  |
+
+&nbsp;
+
+# Instagram
+
+## Likes
+
+- **Rules**
+  - Each user can like a specific post a single time
+  - A user should be able to 'unlike' a post
+  - Need to be able to figure out how many users like a post
+  - Need to be able to list which users like a post
+  - Something besides a post might need to be liked (comments, maybe?)
+  - We might want to think about 'dislikes' or other kinds of reactions
+- **Do not add a 'likes' Column to Posts**
+  - No way to make sure a user likes a post only once
+  - No way to make sure a user can only 'unlike' a post they have liked
+  - No way to figure out which users like a particular post
+  - No way to remove a like if a user gets deleted
+
+![instagram_polymorphic_association](diagrams/instagram_polymorphic_association.png)
+
+- **Polymorphic Association**
+  - A like can be a 'post like' or a 'comment like'
+  - Not recommended, but you'll still see it in use
+  - Requires your app to figure out the meaning of each like
+  - Can't use foreign key columns - `liked_id` is a plain integer
+
+![instagram_polymorphic_association_2](diagrams/instagram_polymorphic_association_2.png)
+
+- **Polymorphic Association alternative implementation**
+  - Each possible type of relation gets its own FK column
+  - We'd still want to make sure either `post_id` or `comment_id` is not `NULL`
+
+```sql
+Add CHECK of (
+  COALESCE((post_id)::BOOLEAN::INTEGER, 0) + COALESCE((comment_id)::BOOLEAN::INTEGER, 0)
+) = 1
+```
+
+- **Using Additional Tables**
+  - Each type of like gets its own table
+  - Still want to write queries that will count up all likes? You can use a Union or a View
 
 &nbsp;
