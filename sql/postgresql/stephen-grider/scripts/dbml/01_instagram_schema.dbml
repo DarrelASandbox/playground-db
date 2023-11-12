@@ -6,9 +6,12 @@ Table users {
   created_at TIMESTAMP
   updated_at TIMESTAMP
   username VARCHAR(30)
-  caption VARCHAR(240)
-  lat REAL
-  lng REAL
+  bio VARCHAR(400)
+  avatar VARCHAR(200)
+  phone VARCHAR(25)
+  email VARCHAR(40)
+  password VARCHAR(50)
+  status VARCHAR(15)
 }
 
 Table posts {
@@ -17,6 +20,9 @@ Table posts {
   updated_at TIMESTAMP
   url VARCHAR(200)
   user_id INTEGER [ref: > users.id]
+  caption VARCHAR(240)
+  lat REAL
+  lng REAL
 }
 
 Table comments {
@@ -49,5 +55,17 @@ Table caption_tags {
   id SERIAL [pk, increment]
   created_at TIMESTAMP
   user_id INTEGER [ref: > users.id]
+  post_id INTEGER [ref: > posts.id]
+}
+
+Table hashtags {
+  id SERIAL [pk, increment]
+  created_at TIMESTAMP
+  title VARCHAR(20)
+}
+
+Table hashtags_posts {
+  id SERIAL [pk, increment]
+  hashtag_id INTEGER [ref: > hashtags.id]
   post_id INTEGER [ref: > posts.id]
 }

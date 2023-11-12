@@ -10,6 +10,7 @@
 - [Instagram](#instagram)
   - [Likes](#likes)
   - [Tags](#tags)
+  - [Posts](#posts)
 
 &nbsp;
 
@@ -197,5 +198,10 @@ Add CHECK of (
 
 - Do you expect to query for `caption_tags` and `photo_tags` at different rates?
 - Will the meaning of a `photo_tags` change at some point?
+
+## Posts
+
+- Number of posts and followers can be calculated by running a query on data that already exists in our database
+- We call this **derived data** which we generally don't want to store derived data
 
 &nbsp;
