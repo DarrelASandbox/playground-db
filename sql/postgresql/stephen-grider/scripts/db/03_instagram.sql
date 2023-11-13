@@ -35,8 +35,8 @@ CREATE TABLE
     lng REAL CHECK (
       lng is NULL
       OR (
-        lng >= -90
-        AND lng <= 90
+        lng >= -180
+        AND lng <= 180
       )
     ),
     CHECK ((lat IS NULL) = (lng IS NULL)),

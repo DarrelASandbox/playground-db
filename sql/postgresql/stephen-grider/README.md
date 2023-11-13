@@ -11,6 +11,7 @@
   - [Likes](#likes)
   - [Tags](#tags)
   - [Posts](#posts)
+  - [Seed Database](#seed-database)
 
 &nbsp;
 
@@ -228,5 +229,29 @@ The choice between these depends on your specific use case:
 - If you want to ensure that a user's interaction is unique for each specific comment on a specific post, use the second option.
 
 It's important to align this decision with the logical structure of your application and how you intend users to interact with posts and comments.
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Seed Database
+
+**Important Notes**:
+
+- Ensure that the database (`instagram`) exists before you run this command.
+- You might need to use additional flags like `-U` for specifying the username if you're not operating as the default user.
+- It's crucial to understand the implications of disabling triggers and not restoring ownership, especially in a production environment, as these can affect database functionality and security.
+
+```sh
+# `-d instagram`: Specifies the database to restore to.
+# `-a` or `--data-only`: Restores only the data.
+# `-x` or `--no-owner`: Skips restoring ownership.
+# `--disable-triggers`: Disables triggers during the restore. (Remember, you need superuser privileges for this.)
+# `-1` - Execute the restore as a single transaction (this is useful for ensuring atomicity).
+# `-v` or `--verbose`: Enables verbose mode.
+pg_restore -d instagram -a -x --disable-triggers -1 -v sql/postgresql/stephen-grider/scripts/db/04_instagram_seed.sql
+```
 
 &nbsp;
