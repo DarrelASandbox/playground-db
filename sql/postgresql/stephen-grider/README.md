@@ -205,3 +205,28 @@ Add CHECK of (
 - We call this **derived data** which we generally don't want to store derived data
 
 &nbsp;
+
+---
+
+&nbsp;
+
+1. `UNIQUE(user_id, post_id), UNIQUE(user_id, comment_id)`:
+
+   - This creates two separate unique constraints.
+   - The first one ensures that the combination of `user_id` and `post_id` is unique across the table. In other words, a user cannot have more than one entry with the same `post_id`.
+   - The second one ensures that the combination of `user_id` and `comment_id` is unique. This means a user cannot have more than one entry with the same `comment_id`.
+   - These constraints are useful if you want to prevent a user from liking/commenting on a post or a comment more than once, but they allow a user to associate with the same post through different comments or vice versa.
+
+2. `UNIQUE(user_id, post_id, comment_id)`:
+   - This creates a single unique constraint on the combination of all three fields.
+   - This means the entire combination of `user_id`, `post_id`, and `comment_id` must be unique in each row. A user can't have multiple entries with the same combination of post and comment IDs.
+   - This constraint is stricter. It's useful if you want each row to represent a unique action of a user on a specific comment of a specific post. For instance, this could be used in a scenario where users are reacting to specific comments on specific posts, and you want to ensure that each reaction is unique.
+
+The choice between these depends on your specific use case:
+
+- If you want to allow a user to interact with a post multiple times through different comments (or vice versa), use the first option.
+- If you want to ensure that a user's interaction is unique for each specific comment on a specific post, use the second option.
+
+It's important to align this decision with the logical structure of your application and how you intend users to interact with posts and comments.
+
+&nbsp;
