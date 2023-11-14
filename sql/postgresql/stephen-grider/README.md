@@ -7,6 +7,7 @@
 - [PGAdmin](#pgadmin)
 - [PostgreSQL](#postgresql)
   - [Validation](#validation)
+  - [Where does Postgres store data?](#where-does-postgres-store-data)
 - [Instagram](#instagram)
   - [Likes](#likes)
   - [Tags](#tags)
@@ -145,6 +146,26 @@
 |     Easier to express more complex validation     | Validation still applied even if you connect with a different client |
 |     Far easier to apply new validation rules      |             Guaranteed that validation is always applied             |
 | Many libraries to handle validation automatically | Can only apply new validation rules if all existing rows satisfy it  |
+
+## Where does Postgres store data?
+
+- [Database Page Layout](https://www.postgresql.org/docs/current/storage-page-layout.html)
+
+|       Term        |                                                   Description                                                    |
+| :---------------: | :--------------------------------------------------------------------------------------------------------------: |
+| Heap or Heap File |                                 File that contains all data (rows) of our table                                  |
+|   Tuple or Item   |                                          Individual row from the table                                           |
+|   Block or Page   | The heap file is divided into many different 'blocks' or 'pages'.</br>Each page/block stores some number of rows |
+
+![psql_heaps_blocks_tuples](diagrams/psql_heaps_blocks_tuples.png)
+
+&nbsp;
+
+![psql_block](diagrams/psql_block.png)
+
+&nbsp;
+
+![psql_block_data_layout](diagrams/psql_block_data_layout.png)
 
 &nbsp;
 
