@@ -8,6 +8,7 @@
 - [PostgreSQL](#postgresql)
   - [Validation](#validation)
   - [Where does Postgres store data?](#where-does-postgres-store-data)
+  - [Indexing](#indexing)
 - [Instagram](#instagram)
   - [Likes](#likes)
   - [Tags](#tags)
@@ -166,6 +167,68 @@
 &nbsp;
 
 ![psql_block_data_layout](diagrams/psql_block_data_layout.png)
+
+&nbsp;
+
+![psql_full_table_scan](diagrams/psql_full_table_scan.png)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+**Full Table Scan in PostgreSQL**
+
+1. **What is a Full Table Scan?**
+
+   - A full table scan occurs when the PostgreSQL query planner decides to read the entire contents of a table to fulfill a query. This happens when it determines that using indexes would be less efficient or when no suitable indexes are available.
+
+2. **Impact on Performance**
+
+   - Full table scans can be resource-intensive, especially for large tables, as they involve reading every row in the table. This can lead to increased I/O, higher CPU usage, and longer query execution times.
+   - If full table scans are frequent, they can significantly degrade overall database performance, particularly if the table is large or accessed frequently.
+
+3. **Avoidance Strategies**
+   - **Indexing:** Proper indexing is key to avoiding unnecessary full table scans. Creating indexes on columns used in WHERE, JOIN, ORDER BY, and GROUP BY clauses can help.
+   - **Query Optimization:** Writing efficient queries, such as avoiding SELECT \*, can reduce the need for full table scans.
+   - **Partitioning:** For very large tables, partitioning can help by breaking the data into smaller, more manageable pieces.
+
+**Best Practices and Version Updates**
+
+To stay updated with the latest changes and optimizations in each PostgreSQL version, it's advisable to regularly check the official PostgreSQL release notes and documentation. Additionally, tuning database parameters and regularly monitoring query performance can help in identifying and mitigating performance issues related to full table scans.
+
+## Indexing
+
+- **Index**: Data structure that efficiently tells us what block/index a record is stored at
+
+  1. Which column do we want to have very fast lookups on? `username`
+  2. Extract only the property we want to do fast lookups by and the block/index for each
+  3. Sort in some meaningful way (Alphabetical for text, value for numbers, etc)
+  4. Organize into a tree data structure. Evenly distribute values in the leaf nodes, in order left to right
+
+- **Downside**
+  - Can be large! Stores data from at least one column of the real table
+  - Slows down insert/update/delete - the index has to be updated!
+  - Index might not actually get used!
+
+| Index Types |                            Description                             |
+| :---------: | :----------------------------------------------------------------: |
+|   B-Tree    |        General purpose index. 99% of the time you want this        |
+|    Hash     |                  Speeds up simple equality checks                  |
+|    GiST     |                     Geometry, full-text search                     |
+|   SP-GiST   | Clustered data, such as dates - many rows might have the same year |
+|     GIN     |            For columns that contain arrays or JSON data            |
+|    BRIN     |               Specialized for really large datasets                |
+
+- **Automatically generated indexes**
+  - Postgres automatically creates an index for the primary key column of every table
+  - Postgres automatically creates an index for any 'unique' constraint
+  - These don't get listed under 'indexes' in PGAdmin!
+
+&nbsp;
+
+![psql_indexing](diagrams/psql_indexing.png)
 
 &nbsp;
 

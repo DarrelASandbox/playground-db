@@ -26,3 +26,42 @@ SELECT
   *
 FROM
   pg_class;
+
+-- ==========================
+-- CREATE & DROP an index
+-- ==========================
+CREATE INDEX ON users (username);
+
+DROP INDEX users_username_idx;
+
+-- ==========================
+-- Benchmarking queries
+-- ==========================
+EXPLAIN
+ANALYZE
+SELECT
+  *
+FROM
+  users
+WHERE
+  username = 'Emil30';
+
+-- ==========================
+-- 872kb & 184kb respectively
+-- ==========================
+SELECT
+  pg_size_pretty(pg_relation_size('users'));
+
+SELECT
+  pg_size_pretty(pg_relation_size('users_username_idx'));
+
+-- ==========================
+-- Retrieve Index Names and Types in PostgreSQL
+-- ==========================
+SELECT
+  relname,
+  relkind
+FROM
+  pg_class
+WHERE
+  relkind = 'i';
