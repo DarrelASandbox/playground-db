@@ -232,6 +232,44 @@ To stay updated with the latest changes and optimizations in each PostgreSQL ver
 
 &nbsp;
 
+![index_disk_memory](diagrams/index_disk_memory.png)
+
+&nbsp;
+
+![index_leaf_node](diagrams/index_leaf_node.png)
+
+&nbsp;
+
+- **Page 3 (Root Node)**: This is the top-level node of the B-tree. It contains pointers to lower-level nodes based on key ranges. Each entry in the root node points to a leaf node where keys are stored. For example, the entry `ALL >= 'Alyson14'` points to the Page 2 leaf node, indicating that all keys starting from 'Alyson14' to the next key in the root node are contained within Page 2.
+
+- **Leaf Nodes (Page 1, Page 2, and Page 4)**: These are the bottom-most nodes of the B-tree, containing the actual data entries. In this case, they appear to store usernames and pointers (probably tuple identifiers) to the actual data rows in the table. For instance, 'Aaliyah.H' on Page 1 has a pointer `(33, 43)`, which likely corresponds to the location of the data in the table.
+
+- **Keys in Leaf Nodes**: Each key within the leaf nodes represents an indexed value in the table. The keys are sorted in ascending order, and each key has an associated pointer to the actual row in the table where the corresponding data can be found.
+
+- **Navigation between Leaf Nodes**: The leaf nodes in a B-tree are typically linked together to facilitate ordered scans. This is indicated by the arrows connecting the bottom nodes. This linking allows for efficient traversal of the index in sorted order without having to go back up to the root node.
+
+- **Special Entries in Leaf Nodes**: It’s common for the very first and last entries in the leaf nodes to be special cases, such as the high key or the rightmost key, which are used to navigate between pages or to serve as boundary keys, as previously mentioned.
+
+&nbsp;
+
+![index_parent_nodes](diagrams/index_parent_nodes.png)
+
+&nbsp;
+
+- **412 Root**: This is the root node of the B-tree index. It contains entries that are pointers to other nodes in the tree. Each entry has a key value and a direction for the tree traversal. For instance, any values greater than or equal to 104311 will be directed towards node 411, and any values greater than or equal to 208621 towards node 698, and so on.
+
+- **Parent Nodes (Page 3, Page 411, Page 698, etc.)**: These are internal nodes that guide the traversal down to the leaf nodes. They help in directing the search to the correct leaf node. For example, in Parent Node Page 3, values greater than or equal to 367 are directed to Page 287. Similarly, Parent Node Page 411 guides the traversal between the range of values it holds.
+
+- **Leaf Nodes (Page 1, Page 2, Page 287, etc.)**: These are the lowest level nodes in the B-tree index structure. They contain the actual indexed values and their corresponding pointers (shown in parentheses), which indicate the physical location of the data within the database table. The indexed values in the leaf nodes are sorted, and the pointers typically refer to a row in the data table. For instance, on Leaf Page 1, the value 1 is associated with the pointer (0,1), and the value 2 is associated with the pointer (0,2).
+
+- **Navigational Structure**: The arrows indicate the navigational structure of the B-tree. Starting from the root, you can follow the pointers through the parent nodes down to the leaf nodes to find the desired value.
+
+- **Key Ranges**: The keys in parent nodes define the range of values stored in their child nodes. For example, in Parent Node Page 3, all values from 2 up to but not including 287 are directed to Page 2, and all values from 287 onwards are directed to Page 287.
+
+This hierarchical structure allows for efficient search operations, as it significantly reduces the number of comparisons needed to find a value compared to a linear search in an unindexed table. The B-tree maintains its balanced nature through operations like splitting and merging nodes, which helps keep the search paths relatively short, thereby speeding up search, insert, and delete operations.
+
+&nbsp;
+
 # Instagram
 
 ## Likes
