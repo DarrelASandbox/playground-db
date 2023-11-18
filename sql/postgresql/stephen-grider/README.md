@@ -9,6 +9,8 @@
   - [Validation](#validation)
   - [Where does Postgres store data?](#where-does-postgres-store-data)
   - [Indexing](#indexing)
+- [Query Tuning](#query-tuning)
+  - [Basic](#basic)
 - [Instagram](#instagram)
   - [Likes](#likes)
   - [Tags](#tags)
@@ -267,6 +269,29 @@ To stay updated with the latest changes and optimizations in each PostgreSQL ver
 - **Key Ranges**: The keys in parent nodes define the range of values stored in their child nodes. For example, in Parent Node Page 3, all values from 2 up to but not including 287 are directed to Page 2, and all values from 287 onwards are directed to Page 287.
 
 This hierarchical structure allows for efficient search operations, as it significantly reduces the number of comparisons needed to find a value compared to a linear search in an unindexed table. The B-tree maintains its balanced nature through operations like splitting and merging nodes, which helps keep the search paths relatively short, thereby speeding up search, insert, and delete operations.
+
+&nbsp;
+
+# Query Tuning
+
+&nbsp;
+
+![query_processing_pipeline](diagrams/query_processing_pipeline.png)
+
+&nbsp;
+
+## Basic
+
+- **`EXPLAIN`**: Build a query plan and display info about it
+- **`EXPLAIN ANALYZE`**: Build a query plan, run it, and info about it
+- **pgAdmin Explain Button**:
+  - Explain Settings
+    - Verbose
+    - Costs
+    - Buffers
+    - Timing
+    - Summary
+    - Settings
 
 &nbsp;
 
