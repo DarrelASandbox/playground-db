@@ -11,6 +11,7 @@
   - [Indexing](#indexing)
 - [Query Tuning](#query-tuning)
   - [Basic](#basic)
+  - [Advance](#advance)
 - [Instagram](#instagram)
   - [Likes](#likes)
   - [Tags](#tags)
@@ -277,6 +278,7 @@ This hierarchical structure allows for efficient search operations, as it signif
 &nbsp;
 
 ![query_processing_pipeline](diagrams/query_processing_pipeline.png)
+![Btree](https://postgrespro.com/blog/pgsql/4161516)
 
 &nbsp;
 
@@ -292,6 +294,60 @@ This hierarchical structure allows for efficient search operations, as it signif
     - Timing
     - Summary
     - Settings
+
+&nbsp;
+
+![index_query_plan](diagrams/index_query_plan.png)
+
+&nbsp;
+
+## Advance
+
+- [Determining Disk Usage](https://www.postgresql.org/docs/current/disk-usage.html)
+- [Query Planning](https://www.postgresql.org/docs/current/runtime-config-query.html)
+- [Sequential scan](https://postgrespro.com/blog/pgsql/5969403)
+
+&nbsp;
+
+![index_constant](diagrams/index_constant.png)
+
+&nbsp;
+
+- **Cost** =
+  - (# pages read sequentially) \* seq_page_cost +
+  - (# pages read at random) \* random_page_cost +
+  - (# rows scanned) \* cpu_tuple_cost +
+  - (# index entries scanned) \* cpu_index_tuple_cost +
+  - (# times function/operator evaluated) \* cpu_operator_cost +
+
+A conceptual representation of how a database management system, like PostgreSQL, might estimate the cost of executing a SQL query. This cost model is an integral part of the query planner's decision-making process. Let's break it down:
+
+1. **(# pages read sequentially) \* seq_page_cost**:
+
+   - This term accounts for the cost of sequentially reading disk pages. Sequential reads are generally faster and less resource-intensive than random reads due to the way data is stored on disk. `seq_page_cost` is a parameter that represents the average cost of reading a page sequentially.
+
+2. **(# pages read at random) \* random_page_cost**:
+
+   - This represents the cost of randomly reading disk pages. Random reads are typically more expensive than sequential reads because they require more disk head movement. `random_page_cost` quantifies the average cost of a random read.
+
+3. **(# rows scanned) \* cpu_tuple_cost**:
+
+   - This term estimates the cost of processing individual rows (tuples). It includes the time taken by the CPU to process each row of data. `cpu_tuple_cost` is a configurable parameter that represents the average cost per row.
+
+4. **(# index entries scanned) \* cpu_index_tuple_cost**:
+
+   - This part of the equation estimates the cost associated with scanning index entries. Index scans can be efficient for filtering and ordering data, but they come with a CPU cost. `cpu_index_tuple_cost` is a parameter that quantifies this cost.
+
+5. **(# times function/operator evaluated) \* cpu_operator_cost**:
+   - This term accounts for the cost of evaluating functions or operators in your query (like mathematical operations, string functions, etc.). Each evaluation consumes CPU resources, and `cpu_operator_cost` is a parameter that represents the average cost of such an operation.
+
+Each of these components plays a role in how the database decides the most efficient way to execute a query. The actual values for these parameters (`seq_page_cost`, `random_page_cost`, etc.) can vary based on the database configuration and the underlying hardware.
+
+This cost model is a simplification and doesn't cover every aspect of query execution (like network latency, disk I/O latency, caching effects, etc.), but it gives a good approximation. Understanding and tweaking these parameters (usually done by a database administrator) can significantly affect query performance, especially in large and complex databases.
+
+&nbsp;
+
+![index_seq_scan](diagrams/index_seq_scan.png)
 
 &nbsp;
 
