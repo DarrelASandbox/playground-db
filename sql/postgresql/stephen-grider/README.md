@@ -1,9 +1,11 @@
 - [About The Project](#about-the-project)
 - [Introduction](#introduction)
 - [Database Design](#database-design)
-- [Joins \& Aggregations](#joins--aggregations)
-- [Unions \& Intersections with Sets](#unions--intersections-with-sets)
-- [Assembling Queries with SubQueries](#assembling-queries-with-subqueries)
+- [SQL](#sql)
+  - [Joins \& Aggregations](#joins--aggregations)
+  - [Unions \& Intersections with Sets](#unions--intersections-with-sets)
+  - [Assembling Queries with SubQueries](#assembling-queries-with-subqueries)
+  - [Common Table Expression (CTE)](#common-table-expression-cte)
 - [PGAdmin](#pgadmin)
 - [PostgreSQL](#postgresql)
   - [Validation](#validation)
@@ -76,7 +78,9 @@
 
 &nbsp;
 
-# Joins & Aggregations
+# SQL
+
+## Joins & Aggregations
 
 - **The more tables we have, the more interesting questions we can answer**
   - Find all the comments for the photo with ID = 3, along with the username of the comment author
@@ -92,9 +96,7 @@
   - Looks at many rows and calculates a single value
   - Words like **'most'**, **'average'**, **'least'** are a sign that you need to use an aggregation
 
-&nbsp;
-
-# Unions & Intersections with Sets
+## Unions & Intersections with Sets
 
 - **`UNION`** - Join together the results of two queries. Remove duplicates
 - **`UNION ALL`** - Join together results of two queries
@@ -103,15 +105,32 @@
 - **`EXCEPT`** - Find the rows that are present in first query but not second query. Remove duplicates
 - **`EXCEPT ALL`** - Find the rows that are present in first query but not second query
 
-&nbsp;
-
-# Assembling Queries with SubQueries
+## Assembling Queries with SubQueries
 
 ![subqueries_source](diagrams/subqueries_source.png)
 
 &nbsp;
 
 ![subqueries_operators](diagrams/subqueries_operators.png)
+
+&nbsp;
+
+## Common Table Expression (CTE)
+
+- **Simple**
+  - Readability
+  - Don't have to use a `UNION` keyword
+- **Recursive**
+  - Useful anytime you have a **tree or graph-type data structure**
+  - Must use a `UNION` keyword
+
+&nbsp;
+
+![cte_recursion](diagrams/cte_recursion.png)
+
+&nbsp;
+
+![cte_recursion_instagram](diagrams/cte_recursion_instagram.png)
 
 &nbsp;
 
@@ -275,10 +294,11 @@ This hierarchical structure allows for efficient search operations, as it signif
 
 # Query Tuning
 
+- [Btree](https://postgrespro.com/blog/pgsql/4161516)
+
 &nbsp;
 
 ![query_processing_pipeline](diagrams/query_processing_pipeline.png)
-![Btree](https://postgrespro.com/blog/pgsql/4161516)
 
 &nbsp;
 
