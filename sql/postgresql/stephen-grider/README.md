@@ -7,6 +7,7 @@
   - [Assembling Queries with SubQueries](#assembling-queries-with-subqueries)
   - [Common Table Expression (CTE)](#common-table-expression-cte)
   - [Views](#views)
+  - [Materialized Views](#materialized-views)
 - [PGAdmin](#pgadmin)
 - [PostgreSQL](#postgresql)
   - [Validation](#validation)
@@ -137,7 +138,7 @@
 
 ## Views
 
-![view_schema_design](diagrams/view_schema_design.png)
+![view_problem_statement_1](diagrams/view_problem_statement_1.png)
 
 &nbsp;
 
@@ -177,13 +178,30 @@ In summary, views are more about structure and long-term accessibility, while CT
 
 &nbsp;
 
-- The 10 most recent posts are really important!
+- **Observation**: The 10 most recent posts are used frequently
   - Show the users who created the 10 most recent posts
   - Show the users who were tagged in the 10 most recent posts
   - Show the average number of hashtags used in the 10 most recent posts
   - Show the number of likes each of the 10 most recent posts received
   - Show the hashtags used by the 10 most recent posts
   - Show the total number of comments the 10 most recent posts received
+- We can insert or update rows in a view if...
+  - The view has one table in its 'FROM'
+  - The view has no with, distinct, group by, having, limit, offset
+  - View has no union, intersect, except
+  - View has no aggregates like avg, sum
+
+## Materialized Views
+
+- Query that gets executed only at very specific times, but the results are saved and can be referenced without re-running the query
+
+![view_problem_statement_2](diagrams/view_problem_statement_2.png)
+
+|                                     Views                                     |                     Materialized Views                     |
+| :---------------------------------------------------------------------------: | :--------------------------------------------------------: |
+|            Underlying query is executed when we reference the view            |          Underlying query is executed right away           |
+|  Data is always fresh, since query is reran every time we reference the view  |  Data can be stale! We have to manually refresh the view   |
+| Use to address design issues or reduce repeating the same query over and over | Use to improve performance - calculate data ahead of time! |
 
 &nbsp;
 
