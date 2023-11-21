@@ -13,6 +13,7 @@
   - [Migration Story](#migration-story)
   - [Migration File](#migration-file)
   - [Libraries For Creating/Running Schema Migrations](#libraries-for-creatingrunning-schema-migrations)
+- [Data Migrations](#data-migrations)
 - [PGAdmin](#pgadmin)
 - [PostgreSQL](#postgresql)
   - [Validation](#validation)
@@ -334,6 +335,73 @@ DATABASE_URL=postgres://USERNAME:PASSWORD@localhost:5432/insta npm run migrate u
 
 # Create migration file to update
 npm run migrate create rename contents to body
+```
+
+&nbsp;
+
+# Data Migrations
+
+![migration_p3](diagrams/migration_p3.png)
+
+&nbsp;
+
+![migration_p4](diagrams/migration_p4.png)
+
+&nbsp;
+
+![migration_data_schema](diagrams/migration_data_schema.png)
+
+&nbsp;
+
+- **Migration Steps**
+  - **Add column loc**: Schema migration
+  - **Copy lat/lng to loc**: Data migration
+  - **Drop columns lat/lng**: Schema migration
+- There are several reasons to not run data migrations at the same time as schema migrations
+
+&nbsp;
+
+![migration_single](diagrams/migration_single.png)
+
+&nbsp;
+
+![migration_transaction_instance](diagrams/migration_transaction_instance.png)
+
+&nbsp;
+
+Running data migrations simultaneously with schema migrations can introduce several risks and complications. It's often advisable to separate these processes for the following reasons:
+
+1. **Complexity and Risk Management:** Schema migrations often involve altering the structure of tables, such as adding, removing, or modifying columns. Performing data migration at the same time increases the complexity and the risk of something going wrong. Separating these processes allows for better focus and reduces the risk of errors.
+
+2. **Transaction Size and Locking:** Large migrations, both schema and data, can result in long-running transactions. This can lead to extensive locking, which affects database performance and availability. Running both simultaneously can exacerbate this problem, leading to significant performance degradation or downtime.
+
+3. **Testing and Verification:** Separating schema and data migrations allows for more focused testing and verification. It's easier to isolate and troubleshoot issues when you're dealing with one type of migration at a time.
+
+4. **Rollback Complexity:** If something goes wrong, it's generally easier to rollback changes that are either schema-related or data-related, but not both. Combining them increases the complexity of the rollback and the potential for data loss or corruption.
+
+5. **Performance Impact:** Data migrations often involve moving, transforming, or processing large amounts of data. Doing this alongside structural changes can put an extra load on the database, leading to performance issues.
+
+6. **Atomicity Concerns:** In many cases, schema changes need to be atomic and instantly visible to the application. Mixing data migration, which can be time-consuming, with schema changes can complicate the atomicity and immediate visibility of these changes.
+
+7. **Application Downtime:** Coordinating schema changes with the application code can be challenging. Running data migrations at the same time can increase the duration of application downtime or the need for maintenance windows.
+
+8. **Monitoring and Resource Allocation:** Running migrations separately allows for better monitoring and resource allocation. For example, you might allocate more resources to a data migration that's expected to take a long time, which might be different from the resources needed for a quick schema change.
+
+9. **Sequential Dependency:** Sometimes, schema changes need to be implemented and verified before data migration can occur. For example, you might need to add a new column before you can migrate data into it.
+
+10. **Data Integrity:** Both types of migrations can affect data integrity. Separating them allows for more focused integrity checks and reduces the likelihood of corrupting data due to overlapping operations.
+
+Due to these reasons, it's often best practice to plan and execute schema and data migrations as distinct steps in your deployment process, ensuring each is completed successfully and verified before proceeding to the next.
+
+&nbsp;
+
+![migration_data_schema_workflow](diagrams/migration_data_schema_workflow.png)
+
+&nbsp;
+
+```sh
+# Create post table
+npm run migrate create add posts table
 ```
 
 &nbsp;
