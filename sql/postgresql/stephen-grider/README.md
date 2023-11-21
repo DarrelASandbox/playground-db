@@ -331,6 +331,9 @@ DATABASE_URL=postgres://USERNAME:PASSWORD@localhost:5432/insta npm run migrate u
 
 
 # Migrations complete!
+
+# Create migration file to update
+npm run migrate create rename contents to body
 ```
 
 &nbsp;
