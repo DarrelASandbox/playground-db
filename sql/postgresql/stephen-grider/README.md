@@ -8,6 +8,7 @@
   - [Common Table Expression (CTE)](#common-table-expression-cte)
   - [Views](#views)
   - [Materialized Views](#materialized-views)
+  - [Transactions](#transactions)
 - [PGAdmin](#pgadmin)
 - [PostgreSQL](#postgresql)
   - [Validation](#validation)
@@ -202,6 +203,14 @@ In summary, views are more about structure and long-term accessibility, while CT
 |            Underlying query is executed when we reference the view            |          Underlying query is executed right away           |
 |  Data is always fresh, since query is reran every time we reference the view  |  Data can be stale! We have to manually refresh the view   |
 | Use to address design issues or reduce repeating the same query over and over | Use to improve performance - calculate data ahead of time! |
+
+&nbsp;
+
+## Transactions
+
+![transaction_connections](diagrams/transaction_connections.png)
+
+- `ROLLBACK`: If "ERROR: current transaction is aborted, commands ignored until end of transaction block"
 
 &nbsp;
 
