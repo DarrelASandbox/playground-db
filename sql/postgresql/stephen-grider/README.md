@@ -9,6 +9,9 @@
   - [Views](#views)
   - [Materialized Views](#materialized-views)
   - [Transactions](#transactions)
+- [Schema Migrations](#schema-migrations)
+  - [Migration Story](#migration-story)
+  - [Migration File](#migration-file)
 - [PGAdmin](#pgadmin)
 - [PostgreSQL](#postgresql)
   - [Validation](#validation)
@@ -211,6 +214,75 @@ In summary, views are more about structure and long-term accessibility, while CT
 ![transaction_connections](diagrams/transaction_connections.png)
 
 - `ROLLBACK`: If "ERROR: current transaction is aborted, commands ignored until end of transaction block"
+
+&nbsp;
+
+# Schema Migrations
+
+## Migration Story
+
+![schema_migration_local_aws](diagrams/schema_migration_local_aws.png)
+
+- **Problem Statement:**
+  - You test out changes to the comments table on your local machine.
+  - Once you're sure they're working, you make the changes to the production DB on AWS
+  - Feedback from other developers: Column name of 'contents' is bad
+- **Solution**
+  - Local machine: `ALTER TABLE comments RENAME COLUMN contents TO body;`
+  - AWS: About .001 seconds after making this change, sirens start going off in your office!
+
+&nbsp;
+
+![schema_migration_api_server](diagrams/schema_migration_api_server.png)
+
+&nbsp;
+
+- **Lesson 1**:
+  - Changes to the DB structure and changes to clients need to be made at precisely the same time
+  - Moving forward, you are responsible for the comments table and related changes to the API accessing the DB
+  - Plus, all of your changes need to be reviewed by another engineer
+  - Your manager tells you to change 'contents' to 'body' again following these new procedures
+
+&nbsp;
+
+![schema_migration_api_deploy](diagrams/schema_migration_api_deploy.png)
+
+- Assumes that you + one other engineer will be ready at exactly the same time to make the DB change + deploy
+
+&nbsp;
+
+![schema_migration_angry_boss](diagrams/schema_migration_angry_boss.png)
+
+&nbsp;
+
+![schema_migration_angry_boss_2](diagrams/schema_migration_angry_boss_2.png)
+
+- **Lesson 2**: When working with other engineers, we need a really easy way to tie the structure of our database to our code
+
+## Migration File
+
+|                                    Up                                    |                             Down                             |
+| :----------------------------------------------------------------------: | :----------------------------------------------------------: |
+|       `ALTER TABLE comments`</br>`RENAME COLUMN contents TO body;`       | `ALTER TABLE comments`</br>`RENAME COLUMN body TO contents;` |
+| Contains a statement that advances, or upgrades, the structure of our DB |  Contains a statement that exactly undo's the 'up' command   |
+
+&nbsp;
+
+![migration_file_workflow_1](diagrams/migration_file_workflow_1.png)
+
+&nbsp;
+
+![migration_file_workflow_2](diagrams/migration_file_workflow_2.png)
+
+&nbsp;
+
+- **Workflow**
+  - Code Review Request
+    - New version of API code referring to 'body' column
+    - Migration file that changes 'contents' column to 'body'
+  - Other engineer 'applies' the migration, gets the correct structure of the DB
+  - Engineer evaluates code
+  - Review complete! Engineer 'reverts' the migration, they're back to the current real structure of the db
 
 &nbsp;
 
