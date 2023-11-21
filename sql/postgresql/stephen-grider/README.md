@@ -307,6 +307,30 @@ npm i node-pg-migrate pg
 
 # Create migration file
 npm run migrate create table comments
+
+# Applying migration
+DATABASE_URL=postgres://USERNAME:PASSWORD@localhost:5432/insta npm run migrate up
+
+# Output:
+# > insta@1.0.0 migrate
+# > node-pg-migrate up
+
+# > Migrating files:
+# > - 1700581283810_table-comments
+# ### MIGRATION 1700581283810_table-comments (UP) ###
+
+#     CREATE TABLE
+#     comments (
+#       id SERIAL PRIMARY KEY,
+#       created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+#       updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+#       content VARCHAR(240) NOT NULL
+#     );
+#   ;
+# INSERT INTO "public"."pgmigrations" (name, run_on) VALUES ('1700581283810_table-comments', NOW());
+
+
+# Migrations complete!
 ```
 
 &nbsp;
