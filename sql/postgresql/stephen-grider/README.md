@@ -12,6 +12,7 @@
 - [Schema Migrations](#schema-migrations)
   - [Migration Story](#migration-story)
   - [Migration File](#migration-file)
+  - [Libraries For Creating/Running Schema Migrations](#libraries-for-creatingrunning-schema-migrations)
 - [PGAdmin](#pgadmin)
 - [PostgreSQL](#postgresql)
   - [Validation](#validation)
@@ -207,8 +208,6 @@ In summary, views are more about structure and long-term accessibility, while CT
 |  Data is always fresh, since query is reran every time we reference the view  |  Data can be stale! We have to manually refresh the view   |
 | Use to address design issues or reduce repeating the same query over and over | Use to improve performance - calculate data ahead of time! |
 
-&nbsp;
-
 ## Transactions
 
 ![transaction_connections](diagrams/transaction_connections.png)
@@ -283,6 +282,29 @@ In summary, views are more about structure and long-term accessibility, while CT
   - Other engineer 'applies' the migration, gets the correct structure of the DB
   - Engineer evaluates code
   - Review complete! Engineer 'reverts' the migration, they're back to the current real structure of the db
+
+## Libraries For Creating/Running Schema Migrations
+
+- **Javascript**
+  - [node-pg-migrate](npmjs.com/package/node-pg-migrate)
+  - [typeorm](npmjs.com/package/typeorm)
+  - [sequelize](npmjs.com/package/sequelize)
+  - [db-migrate](npmjs.com/package/db-migrate)
+- **Python**
+  - [alembic](pypi.org/project/alembic/)
+  - [yoyo-migrations](pypi.org/project/yoyo-migrations/)
+- **Java**
+  - [flywaydb](flywaydb.org)
+- **Go**
+  - [golang-migrate/migrate](github.com/golang-migrate/migrate)
+  - [go-pg/migrations](github.com/go-pg/migrations)
+  - [gorm](gorm.io/docs/migration.html)
+
+```sh
+# From `insta` folder
+npm init -y
+npm i node-pg-migrate pg
+```
 
 &nbsp;
 
