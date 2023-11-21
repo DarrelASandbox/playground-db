@@ -304,6 +304,9 @@ In summary, views are more about structure and long-term accessibility, while CT
 # From `insta` folder
 npm init -y
 npm i node-pg-migrate pg
+
+# Create migration file
+npm run migrate create table comments
 ```
 
 &nbsp;
