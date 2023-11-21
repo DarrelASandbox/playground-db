@@ -6,6 +6,7 @@
   - [Unions \& Intersections with Sets](#unions--intersections-with-sets)
   - [Assembling Queries with SubQueries](#assembling-queries-with-subqueries)
   - [Common Table Expression (CTE)](#common-table-expression-cte)
+  - [Views](#views)
 - [PGAdmin](#pgadmin)
 - [PostgreSQL](#postgresql)
   - [Validation](#validation)
@@ -131,6 +132,58 @@
 &nbsp;
 
 ![cte_recursion_instagram](diagrams/cte_recursion_instagram.png)
+
+&nbsp;
+
+## Views
+
+![view_schema_design](diagrams/view_schema_design.png)
+
+&nbsp;
+
+- **Merging Tables Observation**: Frequent use of `UNION` indicates redundancy and inefficiency when tables `photo_tags` and `caption_tags` are queried together often.
+  - Keeping these records in separate tables has not provided any tangible benefits and has led to more complex queries.
+- **Solution 1: Consolidation Strategy**: Propose merging `photo_tags` and `caption_tags` into a single `tags` table.
+  - The `id` column from the original tables cannot be directly copied since uniqueness cannot be guaranteed across both tables. Instead, a new `id` should be created for the unified table.
+  - Before deleting the original tables, we must update all existing queries and application logic to refer to the new `tags` table. Consider creating views with the old table names during the transition period to minimize the impact on existing applications.
+  - A thorough impact analysis is required to ensure that no functionality is broken by the removal of the original tables.
+- **Solution 2:**
+  - Create a fake table that has rows from other tables
+  - These can be exact rows as they exist on another table, or a computed value
+  - Can reference the view in any place where we'd normally reference a table
+  - View doesn't actually create a new table or move any data around
+  - Doesn't have to be used for a union! Can compute absolutely any values
+
+&nbsp;
+
+![view_solution_2](diagrams/view_solution_2.png)
+
+&nbsp;
+
+1. **Views:**
+   - **Persistence:** A view is a database object that is stored on the server. Once created, it persists in the database until it is explicitly dropped or altered.
+   - **Reusability:** Views can be reused across different queries and by different users. They act almost like a virtual table.
+   - **Performance:** Since views are stored, they can have performance benefits through the use of indexing, though the data is not stored separately from the base tables.
+   - **Security:** Views can be used to provide a security mechanism to restrict access to certain rows or columns of data.
+   - **Updates:** Some views are updatable, meaning you can perform `INSERT`, `UPDATE`, or `DELETE` operations on them which will affect the underlying base tables.
+2. **Common Table Expressions (CTEs):**
+   - **Temporary Nature:** A CTE is a temporary result set that is defined within the execution scope of a single statement like `SELECT`, `INSERT`, `UPDATE`, `DELETE`, or even inside another CTE. It is not stored as an object in the database and does not persist beyond the execution of the query.
+   - **Readability:** CTEs can make complex subqueries more readable by breaking them down into simpler blocks.
+   - **Recursive Queries:** CTEs support recursive queries, which are not possible with views. This is especially useful for dealing with hierarchical or tree-structured data.
+   - **Performance:** The performance of a CTE can be less optimal compared to a view because it's essentially equivalent to a subquery. It is recalculated every time the CTE is referenced in the query.
+   - **Scope:** A CTE has a scope limited to the query or the statement in which it is defined and cannot be reused outside of that query.
+
+In summary, views are more about structure and long-term accessibility, while CTEs are about clarity and breaking down complex logic within the scope of a single query. The choice between a view and a CTE will depend on the specific requirements of the task at hand, such as the need for reusability, performance considerations, and the complexity of the queries involved.
+
+&nbsp;
+
+- The 10 most recent posts are really important!
+  - Show the users who created the 10 most recent posts
+  - Show the users who were tagged in the 10 most recent posts
+  - Show the average number of hashtags used in the 10 most recent posts
+  - Show the number of likes each of the 10 most recent posts received
+  - Show the hashtags used by the 10 most recent posts
+  - Show the total number of comments the 10 most recent posts received
 
 &nbsp;
 
