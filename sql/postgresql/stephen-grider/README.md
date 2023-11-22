@@ -402,6 +402,14 @@ Due to these reasons, it's often best practice to plan and execute schema and da
 ```sh
 # Create post table
 npm run migrate create add posts table
+
+# Setup web server
+# From `insta` folder
+npm install express
+touch index.js
+
+# Run script
+node index.js
 ```
 
 &nbsp;

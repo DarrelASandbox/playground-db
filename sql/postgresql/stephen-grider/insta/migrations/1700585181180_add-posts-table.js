@@ -9,7 +9,7 @@ exports.up = (pgm) =>
       id SERIAL PRIMARY KEY,
       url VARCHAR(300),
       lat NUMERIC,
-      lon NUMERIC
+      lng NUMERIC
     )
   `);
 
