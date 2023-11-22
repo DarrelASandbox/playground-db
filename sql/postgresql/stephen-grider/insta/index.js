@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const pg = require('pg');
 
@@ -5,8 +7,8 @@ const pool = new pg.Pool({
   host: 'localhost',
   port: 5432,
   database: 'insta',
-  user: '',
-  password: '',
+  user: process.env.PGDB_USER,
+  password: process.env.PGDB_PASSWORD,
 });
 
 const app = express();
@@ -56,8 +58,8 @@ app.get('/posts', async (req, res) => {
 
 app.post('/posts', async (req, res) => {
   const { lat, lng } = req.body;
-  const queryText = 'INSERT INTO posts (lat, lng) VALUES ($1, $2)';
-  await pool.query(queryText, [lat, lng]);
+  const queryText = 'INSERT INTO posts (lat, lng, loc) VALUES ($1, $2, $3)';
+  await pool.query(queryText, [lat, lng, `(${lng}, ${lat})`]);
   res.redirect('/posts');
 });
 

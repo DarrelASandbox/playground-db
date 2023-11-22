@@ -14,6 +14,7 @@
   - [Migration File](#migration-file)
   - [Libraries For Creating/Running Schema Migrations](#libraries-for-creatingrunning-schema-migrations)
 - [Data Migrations](#data-migrations)
+  - [Transaction Locks](#transaction-locks)
 - [PGAdmin](#pgadmin)
 - [PostgreSQL](#postgresql)
   - [Validation](#validation)
@@ -410,7 +411,20 @@ touch index.js
 
 # Run script
 node index.js
+
+# Create migration file to add column
+npm run migrate create add loc to posts
 ```
+
+&nbsp;
+
+## Transaction Locks
+
+![migration_using_js](diagrams/migration_using_js.png)
+
+&nbsp;
+
+![migration_using_sql](diagrams/migration_using_sql.png)
 
 &nbsp;
 
