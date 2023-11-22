@@ -20,6 +20,7 @@
   - [Validation](#validation)
   - [Where does Postgres store data?](#where-does-postgres-store-data)
   - [Indexing](#indexing)
+  - [Accessing Postgres from API](#accessing-postgres-from-api)
 - [Query Tuning](#query-tuning)
   - [Basic](#basic)
   - [Advance](#advance)
@@ -586,6 +587,16 @@ To stay updated with the latest changes and optimizations in each PostgreSQL ver
 - **Key Ranges**: The keys in parent nodes define the range of values stored in their child nodes. For example, in Parent Node Page 3, all values from 2 up to but not including 287 are directed to Page 2, and all values from 287 onwards are directed to Page 287.
 
 This hierarchical structure allows for efficient search operations, as it significantly reduces the number of comparisons needed to find a value compared to a linear search in an unindexed table. The B-tree maintains its balanced nature through operations like splitting and merging nodes, which helps keep the search paths relatively short, thereby speeding up search, insert, and delete operations.
+
+## Accessing Postgres from API
+
+```sh
+# Initial setup for ./api/social-repo
+npm init -y
+npm install dedent express jest node-pg-migrate nodemon pg pg-format supertest
+npm run migrate create add users table
+DATABASE_URL=postgres://USERNAME:PASSWORD@localhost:5432/social-repo npm run migrate up
+```
 
 &nbsp;
 
