@@ -414,6 +414,9 @@ node index.js
 
 # Create migration file to add column
 npm run migrate create add loc to posts
+
+# Create migration file to drop columns
+npm run migrate create drop lng and lat from posts
 ```
 
 &nbsp;
