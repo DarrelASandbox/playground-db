@@ -608,6 +608,10 @@ DATABASE_URL=postgres://USERNAME:PASSWORD@localhost:5432/social-repo npm run mig
 
 &nbsp;
 
+![api_pg_pool](diagrams/api_pg_pool.png)
+
+&nbsp;
+
 # Query Tuning
 
 - [Btree](https://postgrespro.com/blog/pgsql/4161516)
