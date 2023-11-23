@@ -598,6 +598,14 @@ npm run migrate create add users table
 DATABASE_URL=postgres://USERNAME:PASSWORD@localhost:5432/social-repo npm run migrate up
 ```
 
+|   Route    | Method |                 Goal                 |
+| :--------: | :----: | :----------------------------------: |
+|   /users   |  GET   | Fetch all users from the users table |
+| /users/:id |  GET   |  Fetch a user with a particular ID   |
+|   /users   |  POST  |          Create a new user           |
+| /users/:id |  PUT   |  Update a user with a particular ID  |
+| /users/:id | DELETE |  Delete a user with a particular ID  |
+
 &nbsp;
 
 # Query Tuning
