@@ -24,6 +24,8 @@
 - [Query Tuning](#query-tuning)
   - [Basic](#basic)
   - [Advance](#advance)
+- [Security](#security)
+  - [SQL Injection](#sql-injection)
 - [Instagram](#instagram)
   - [Likes](#likes)
   - [Tags](#tags)
@@ -239,7 +241,7 @@ In summary, views are more about structure and long-term accessibility, while CT
 
 &nbsp;
 
-- **Lesson 1**:
+- **Key Takeaway 1**:
   - Changes to the DB structure and changes to clients need to be made at precisely the same time
   - Moving forward, you are responsible for the comments table and related changes to the API accessing the DB
   - Plus, all of your changes need to be reviewed by another engineer
@@ -259,7 +261,7 @@ In summary, views are more about structure and long-term accessibility, while CT
 
 ![schema_migration_angry_boss_2](diagrams/schema_migration_angry_boss_2.png)
 
-- **Lesson 2**: When working with other engineers, we need a really easy way to tie the structure of our database to our code
+- **Key Takeaway 2**: When working with other engineers, we need a really easy way to tie the structure of our database to our code
 
 ## Migration File
 
@@ -688,6 +690,30 @@ This cost model is a simplification and doesn't cover every aspect of query exec
 &nbsp;
 
 ![index_seq_scan](diagrams/index_seq_scan.png)
+
+&nbsp;
+
+# Security
+
+## SQL Injection
+
+- **POST URLs Examples**
+  - `localhost:3005/users/1`
+    - Here, `1` gets extracted as a plain string and added into our query.
+  - `localhost:3005/users/1;DROP TABLE users;`
+    - This demonstrates a SQL injection attack where malicious SQL code (`DROP TABLE`) is inserted.
+- **Key Takeaway**:
+  - We should NEVER, EVER directly concatenate user-provided input into a SQL query. Doing so can lead to SQL injection vulnerabilities.
+- **Solutions**:
+  - Implement code in our app to 'sanitize' user-provided values. Sanitization involves checking and cleaning the input to ensure it's safe for database operations.
+  - Utilize PostgreSQL's built-in mechanisms to sanitize values. This can include using prepared statements which pre-compile the SQL query, safely separating data from the control logic.
+- **Restoring table**
+  - `DELETE FROM pgmigrations WHERE name = '1700696465774_add-users-table';`
+  - `npm run migrate up` command
+
+&nbsp;
+
+![security_sanitize](diagrams/security_sanitize.png)
 
 &nbsp;
 
