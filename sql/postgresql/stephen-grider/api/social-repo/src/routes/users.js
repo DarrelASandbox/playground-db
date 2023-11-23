@@ -8,7 +8,12 @@ router.get('/users', async (req, res) => {
   res.send(users);
 });
 
-router.get('/users/:id', async (req, res) => {});
+router.get('/users/:id', async (req, res) => {
+  const { id } = req.params;
+  const user = await UserRepo.findById(id);
+  return user ? res.send(user) : res.sendStatus(404);
+});
+
 router.post('/users', async (req, res) => {});
 router.put('/users/:id', async (req, res) => {});
 router.delete('/users/:id', async (req, res) => {});

@@ -7,7 +7,11 @@ class UserRepo {
     return toCamelCase(rows);
   }
 
-  static async findById() {}
+  static async findById(id) {
+    const { rows } = await pool.query(`SELECT * FROM users WHERE id = ${id};`); // Security issue
+    return toCamelCase(rows)[0];
+  }
+
   static async insert() {}
   static async update() {}
   static async delete() {}
