@@ -11,6 +11,8 @@ class Pool {
     return this._pool.end();
   }
 
+  // `users.test.js`: `create a user`
+  // TypeError: Cannot read properties of null (reading 'query')
   query(sql, params) {
     return this._pool.query(sql, params);
   }
