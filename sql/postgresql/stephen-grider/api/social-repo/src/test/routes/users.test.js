@@ -24,7 +24,6 @@ afterAll(() => pool.close());
 
 it('create a user', async () => {
   const startingCount = await UserRepo.count();
-  expect(startingCount).toEqual(2); // Refer to 1700696465774_add-users-table
 
   await request(buildApp())
     .post('/users')
@@ -32,5 +31,5 @@ it('create a user', async () => {
     .expect(200);
 
   const finishCount = await UserRepo.count();
-  expect(finishCount).toEqual(3);
+  expect(finishCount - startingCount).toEqual(1);
 });
