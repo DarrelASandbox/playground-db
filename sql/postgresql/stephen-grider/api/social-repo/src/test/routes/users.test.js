@@ -8,15 +8,19 @@ const pool = require('../../pool');
 
 // Establish a connection to the database for testing purposes.
 // This is necessary here as the main connection is established in `index.js`.
-beforeAll(() => {
-  return pool.connect({
+beforeAll(() =>
+  pool.connect({
     host: 'localhost',
     port: 5432,
     database: 'social-repo',
     user: process.env.PGDB_USER,
     password: process.env.PGDB_PASSWORD,
-  });
-});
+  })
+);
+
+// Close the database connection after all tests have completed.
+// This ensures that Jest can exit cleanly by resolving any pending database connections.
+afterAll(() => pool.close());
 
 it('create a user', async () => {
   const startingCount = await UserRepo.count();
