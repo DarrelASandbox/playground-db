@@ -12,7 +12,7 @@ beforeAll(() =>
   pool.connect({
     host: 'localhost',
     port: 5432,
-    database: 'social-repo',
+    database: 'social-repo-test',
     user: process.env.PGDB_USER,
     password: process.env.PGDB_PASSWORD,
   })
@@ -28,7 +28,8 @@ it('create a user', async () => {
 
   await request(buildApp())
     .post('/users')
-    .send({ username: 'testUser', bio: 'testBio' }.expect(200));
+    .send({ username: 'testUser', bio: 'testBio' })
+    .expect(200);
 
   const finishCount = await UserRepo.count();
   expect(finishCount).toEqual(3);
