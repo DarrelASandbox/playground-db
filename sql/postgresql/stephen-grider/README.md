@@ -26,6 +26,7 @@
   - [Advance](#advance)
 - [Security](#security)
   - [SQL Injection](#sql-injection)
+- [Parallel Testing](#parallel-testing)
 - [Instagram](#instagram)
   - [Likes](#likes)
   - [Tags](#tags)
@@ -714,6 +715,21 @@ This cost model is a simplification and doesn't cover every aspect of query exec
 &nbsp;
 
 ![security_sanitize](diagrams/security_sanitize.png)
+
+&nbsp;
+
+# Parallel Testing
+
+- **Option 1**: Each test file gets its own database
+- **Option 2**: Each test file gets its own schema
+- **Schemas**:
+  - Schemas are like folders to organize things in a database
+  - Every database gets a default schema called 'public'
+  - Each schema can have its own separate copy of a table
+
+&nbsp;
+
+![psql_routing_schema_access](diagrams/psql_routing_schema_access.png)
 
 &nbsp;
 
