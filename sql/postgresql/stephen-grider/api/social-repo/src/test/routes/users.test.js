@@ -8,6 +8,7 @@ const pool = require('../../pool');
 
 const { randomBytes } = require('crypto');
 const { default: migrate } = require('node-pg-migrate');
+const format = require('pg-format');
 
 // Establish a connection to the database for testing purposes.
 // This is necessary here as the main connection is established in `index.js`.
@@ -22,8 +23,8 @@ beforeAll(async () => {
     password: process.env.PGDB_PASSWORD,
   });
 
-  await pool.query(`CREATE ROLE ${roleName} WITH LOGIN PASSWORD '${roleName}'`);
-  await pool.query(`CREATE SCHEMA ${roleName} AUTHORIZATION ${roleName}`);
+  await pool.query(format('CREATE ROLE %I WITH LOGIN PASSWORD %L;', roleName, roleName));
+  await pool.query(format('CREATE SCHEMA %I AUTHORIZATION %I;', roleName, roleName));
 
   await pool.close();
 

@@ -727,6 +727,10 @@ This cost model is a simplification and doesn't cover every aspect of query exec
   - Every database gets a default schema called 'public'
   - Each schema can have its own separate copy of a table
 
+> PostgreSQL does not support parameters for identifiers. If you need to have dynamic database, schema, table, or column names (e.g. in DDL statements) use pg-format package for handling escaping these values to ensure you do not have SQL injection!
+
+- [parameterized-query](https://node-postgres.com/features/queries#parameterized-query)
+
 &nbsp;
 
 ![psql_routing_schema_access](diagrams/psql_routing_schema_access.png)
