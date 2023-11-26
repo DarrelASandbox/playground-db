@@ -1,61 +1,17 @@
-require('dotenv').config();
-
 const request = require('supertest');
 
 const buildApp = require('../../app');
 const UserRepo = require('../../repos/user-repo');
-const pool = require('../../pool');
-
-const { randomBytes } = require('crypto');
-const { default: migrate } = require('node-pg-migrate');
-const format = require('pg-format');
+const Context = require('../context');
 
 // Establish a connection to the database for testing purposes.
 // This is necessary here as the main connection is established in `index.js`.
-beforeAll(async () => {
-  const roleName = 'a' + randomBytes(4).toString('hex');
-
-  await pool.connect({
-    host: 'localhost',
-    port: 5432,
-    database: 'social-repo-test',
-    user: process.env.PGDB_USER,
-    password: process.env.PGDB_PASSWORD,
-  });
-
-  await pool.query(format('CREATE ROLE %I WITH LOGIN PASSWORD %L;', roleName, roleName));
-  await pool.query(format('CREATE SCHEMA %I AUTHORIZATION %I;', roleName, roleName));
-
-  await pool.close();
-
-  // Run our migrations in the new schema
-  await migrate({
-    schema: roleName,
-    direction: 'up',
-    log: () => {},
-    noLock: true,
-    dir: 'migrations',
-    databaseUrl: {
-      host: 'localhost',
-      port: 5432,
-      database: 'social-repo-test',
-      user: roleName,
-      password: roleName,
-    },
-  });
-
-  await pool.connect({
-    host: 'localhost',
-    port: 5432,
-    database: 'social-repo-test',
-    user: roleName,
-    password: roleName,
-  });
-});
+let context;
+beforeAll(async () => (context = await Context.build()));
 
 // Close the database connection after all tests have completed.
 // This ensures that Jest can exit cleanly by resolving any pending database connections.
-afterAll(() => pool.close());
+afterAll(() => context.close());
 
 it('create a user', async () => {
   const startingCount = await UserRepo.count();
