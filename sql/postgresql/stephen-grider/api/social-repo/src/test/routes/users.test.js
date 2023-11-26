@@ -9,6 +9,10 @@ const Context = require('../context');
 let context;
 beforeAll(async () => (context = await Context.build()));
 
+beforeEach(async () => {
+  await context.reset();
+});
+
 // Close the database connection after all tests have completed.
 // This ensures that Jest can exit cleanly by resolving any pending database connections.
 afterAll(() => context.close());
