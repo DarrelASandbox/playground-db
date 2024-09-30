@@ -13,6 +13,8 @@
   - [Database Normalization (3NF)](#database-normalization-3nf)
   - [Building Tables](#building-tables)
   - [Relational Power](#relational-power)
+- [Module 4](#module-4)
+  - [Many to Many Relationships](#many-to-many-relationships)
 
 # About The Project
 
@@ -167,3 +169,12 @@ psql music
 - You must tell the `JOIN` how to use the keys that make the connection between the tables using an `ON CLAUS`
 
 ![inserting-data](./ss/inserting-data.png)
+
+# Module 4
+
+## Many to Many Relationships
+
+- **Complexity Enables Speed**
+  - Complexity makes speed possible and allows you to get very fast results as the data size grows.
+  - By normalizing the data and linking it with integer keys, the overall amount of data which the relational database must scan is far lower than if the data were simply flattened out.
+  - It might seem like a tradeoff - spend some time designing your database so it continues to be fast when your application is a success.
