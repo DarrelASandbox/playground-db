@@ -1,4 +1,7 @@
-
-
-select id, body->'species'->>'name' from pokeapi limit 1;
+SELECT
+  id,
+  body -> 'species' ->> 'name'
+FROM
+  pokeapi
+LIMIT 1;
 
