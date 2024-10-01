@@ -1,9 +1,13 @@
-Python FOR Everybody DATABASE Handout https: / / www.pg4e.com / lectures / 02 - DATABASE - Design - Many - TO - Many.txt sudo - u postgres psql postgres l -- list databases
+-- Python for Everybody Database Handout
+-- https://www.pg4e.com/lectures/02-Database-Design-Many-to-Many.txt
+sudo - u postgres psql postgres
+--
+\l       -- list databases
 -- Should already be done: CREATE USER pg4e WITH PASSWORD 'secret';
 CREATE DATABASE music WITH OWNER 'pg4e' ENCODING 'UTF8';
 
-q -- quit
-psql music pg4e dt -- List relations (tables)
+\q       -- quit
+psql music pg4e \dt      -- List relations (tables)
 CREATE TABLE artist(
   id serial,
   name varchar(128) UNIQUE,
@@ -36,7 +40,8 @@ CREATE TABLE track(
 );
 
 -- Describe table
-d track INSERT INTO artist(name)
+\d track
+INSERT INTO artist(name)
   VALUES ('Led Zeppelin');
 
 INSERT INTO artist(name)

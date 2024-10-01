@@ -305,14 +305,8 @@ CREATE TABLE mbox(
 );
 
 -- E'\007' is the BEL character and not in the data so each row is one column
-COPY mbox
-FROM
-  'mbox-short.txt' WITH DELIMITER E '\007';
-
-COPY mbox
-FROM
-  PROGRAM 'wget -q -O - "$@" https://www.pg4e.com/lectures/mbox-short.txt' WITH DELIMITER E '\007';
-
+\copy mbox FROM 'mbox-short.txt' with delimiter E'\007';
+\copy mbox FROM PROGRAM 'wget -q -O - "$@" https://www.pg4e.com/lectures/mbox-short.txt' with delimiter E'\007';
 SELECT
   line
 FROM

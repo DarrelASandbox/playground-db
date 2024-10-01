@@ -1,11 +1,16 @@
 -- Python for Everybody Database Handout
 -- https://www.pg4e.com/lectures/03-Techniques.txt
-sudo - u postgres psql postgres l -- list databases
+sudo - u postgres psql postgres
+--
+\l       -- list databases
 -- Should already be done: CREATE USER pg4e WITH PASSWORD 'secret';
 CREATE DATABASE discuss WITH OWNER 'pg4e' ENCODING 'UTF8';
 
-q -- quit
-psql discuss pg4e dt -- List relations (tables)
+\q       -- quit
+--
+psql discuss pg4e
+--
+\dt      -- List relations (tables)
 CREATE TABLE account(
   id serial,
   email varchar(128) UNIQUE,
@@ -16,8 +21,7 @@ CREATE TABLE account(
 
 CREATE TABLE post(
   id serial,
-  title varchar(128) UNIQUE NOT NULL,
-  -- Will extend with ALTER
+  title varchar(128) UNIQUE NOT NULL, -- Will extend with ALTER
   content varchar(1024),
   account_id integer REFERENCES account(id) ON DELETE CASCADE,
   created_at timestamptz NOT NULL DEFAULT NOW(),
@@ -38,8 +42,7 @@ CREATE TABLE comment(
 
 CREATE TABLE fav(
   id serial,
-  oops text,
-  -- Will remove later with ALTER
+  oops text, -- Will remove later with ALTER
   post_id integer REFERENCES post(id) ON DELETE CASCADE,
   account_id integer REFERENCES account(id) ON DELETE CASCADE,
   created_at timestamptz NOT NULL DEFAULT NOW(),
@@ -48,7 +51,8 @@ CREATE TABLE fav(
   PRIMARY KEY (id)
 );
 
-d + fav -- ALTER TABLE
+\d+ fav
+-- ALTER TABLE
 ALTER TABLE post
   ALTER COLUMN content TYPE TEXT;
 
@@ -60,7 +64,8 @@ ALTER TABLE fav
 
 -- Read SQL Commands fom a script
 -- Download https://www.pg4e.com/lectures/03-Techniques-Load.sql
-i 03 - Techniques - Load.sql -- Dates
+\i 03-Techniques-Load.sql
+-- Dates
 SELECT
   NOW();
 
@@ -521,10 +526,9 @@ CREATE TABLE xy(
   UNIQUE (x, y_id)
 );
 
-d xy_raw d + y COPY xy_raw(x, y)
-FROM
-  '03-Techniques.csv' WITH DELIMITER ',' CSV;
-
+\d xy_raw
+\d+ y
+\copy xy_raw(x,y) FROM '03-Techniques.csv' WITH DELIMITER ',' CSV;
 SELECT DISTINCT
   y
 FROM

@@ -150,7 +150,7 @@ SELECT
 FROM
   docs
 WHERE
-  '{learn}' < @ string_to_array(doc, ' ');
+  '{learn}' <@ string_to_array(doc, ' ');
 
 EXPLAIN
 SELECT
@@ -159,7 +159,7 @@ SELECT
 FROM
   docs
 WHERE
-  '{learn}' < @ string_to_array(doc, ' ');
+  '{learn}' <@ string_to_array(doc, ' ');
 
 -- Inverted string index with stop words using SQL
 -- If we know the documents contain natural language, we can optimize indexes
@@ -506,7 +506,7 @@ SELECT
   websearch_to_tsquery('english', 'SQL -not Python');
 
 SELECT
-  to_tsquery('english', 'teaching') @ @ to_tsvector('english', 'UMSI also teaches Python and also SQL');
+  to_tsquery('english', 'teaching') @@ to_tsvector('english', 'UMSI also teaches Python and also SQL');
 
 -- Lets do an english language inverted index using a tsvector index.
 -- https://www.pg4e.com/lectures/05-FullText.sql
@@ -538,7 +538,7 @@ SELECT
 FROM
   docs
 WHERE
-  to_tsquery('english', 'learn') @ @ to_tsvector('english', doc);
+  to_tsquery('english', 'learn') @@ to_tsvector('english', doc);
 
 EXPLAIN
 SELECT
@@ -547,7 +547,7 @@ SELECT
 FROM
   docs
 WHERE
-  to_tsquery('english', 'learn') @ @ to_tsvector('english', doc);
+  to_tsquery('english', 'learn') @@ to_tsvector('english', doc);
 
 -- Check the operation types for the various indexes
 -- SELECT version();   -- PostgreSQL 9.6.7

@@ -20,10 +20,8 @@ INSERT INTO account(email)
 ('sally@umich.edu');
 
 INSERT INTO post(title, content, account_id)
-  VALUES ('Dictionaries', 'Are fun', 3),
-  -- sally@umich.edu
-('BeautifulSoup', 'Has a complex API', 1),
-  -- ed@mich.edu
+  VALUES ('Dictionaries', 'Are fun', 3), -- sally@umich.edu
+('BeautifulSoup', 'Has a complex API', 1), -- ed@mich.edu
 ('Many to Many', 'Is elegant',(
       SELECT
         id
@@ -32,12 +30,9 @@ INSERT INTO post(title, content, account_id)
         email = 'sue@umich.edu'));
 
 INSERT INTO comment(content, post_id, account_id)
-  VALUES ('I agree', 1, 1),
-  -- dict / ed
-('Especially for counting', 1, 2),
-  -- dict / sue
-('And I don''t understand why', 2, 2),
-  -- dict / sue
+  VALUES ('I agree', 1, 1), -- dict / ed
+('Especially for counting', 1, 2), -- dict / sue
+('And I don''t understand why', 2, 2), -- dict / sue
 ('Someone should make "EasySoup" or something like that',(
       SELECT
         id

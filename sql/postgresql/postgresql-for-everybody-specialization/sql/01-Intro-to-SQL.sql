@@ -1,11 +1,14 @@
-Python FOR Everybody DATABASE Handout https: / / www.pg4e.com / lectures / 01 - Intro - TO - SQL.txt Setup - Making a DATABASE / User: Note: --- is the start of a comment - do not include these
-sudo - u postgres psql postgres l -- list databases
+-- Python for Everybody Database Handout
+-- https://www.pg4e.com/lectures/01-Intro-to-SQL.txt
+-- Setup - Making a Database / User:
+-- Note:  --- is the start of a comment - do not include these
+sudo - u postgres psql postgres \l       -- list databases
 CREATE USER pg4e WITH PASSWORD 'secret';
 
 CREATE DATABASE people WITH OWNER 'pg4e' ENCODING 'UTF8';
 
-q -- quit
-Running SQL Commands: psql people pg4e dt -- List relations (tables)
+\q       -- quit
+Running SQL Commands: psql people pg4e \dt      -- List relations (tables)
 CREATE TABLE users(
   name varchar(128),
   email varchar(128)

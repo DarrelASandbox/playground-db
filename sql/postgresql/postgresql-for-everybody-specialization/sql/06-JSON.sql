@@ -10,10 +10,7 @@ CREATE TABLE IF NOT EXISTS jtrack(
 -- simple JSON without embedded newlines in the JSON values, this is good enough.
 -- http://adpgtech.blogspot.com/2014/09/importing-json-data.html
 -- wget https://www.pg4e.com/code/library.jstxt
-COPY jtrack(body)
-FROM
-  'library.jstxt' WITH CSV QUOTE E '\x01' DELIMITER E '\x02';
-
+\copy jtrack (body) FROM 'library.jstxt' WITH CSV QUOTE E'\x01' DELIMITER E'\x02';
 SELECT
   *
 FROM
@@ -104,14 +101,14 @@ SELECT
 FROM
   jtrack
 WHERE
-  body @ > '{"name": "Summer Nights"}';
+  body @> '{"name": "Summer Nights"}';
 
 SELECT
   COUNT(*)
 FROM
   jtrack
 WHERE
-  body @ >('{"name": "Summer Nights"}'::jsonb);
+  body @>('{"name": "Summer Nights"}'::jsonb);
 
 -- Adding something to the JSONB column
 UPDATE
@@ -187,7 +184,7 @@ SELECT
 FROM
   jtrack
 WHERE
-  body @ > '{"name": "Summer Nights"}';
+  body @> '{"name": "Summer Nights"}';
 
 EXPLAIN
 SELECT
@@ -195,7 +192,7 @@ SELECT
 FROM
   jtrack
 WHERE
-  body @ > '{"artist": "Queen"}';
+  body @> '{"artist": "Queen"}';
 
 EXPLAIN
 SELECT
@@ -203,7 +200,7 @@ SELECT
 FROM
   jtrack
 WHERE
-  body @ > '{"name": "Folsom Prison Blues", "artist": "Johnny Cash"}';
+  body @> '{"name": "Folsom Prison Blues", "artist": "Johnny Cash"}';
 
 -- https://stackoverflow.com/questions/30074452/how-to-update-a-jsonb-columns-field-in-postgresql
 -- Updating a numeric field in JSONB
@@ -303,7 +300,7 @@ SELECT
 FROM
   swapi
 WHERE
-  body @ > '{"director": "George Lucas"}';
+  body @> '{"director": "George Lucas"}';
 
 EXPLAIN
 SELECT
@@ -311,7 +308,7 @@ SELECT
 FROM
   swapi
 WHERE
-  body @ > '{"director": "George Lucas"}';
+  body @> '{"director": "George Lucas"}';
 
 -- Lets throw some race cars into the table to make sure PG finds indexes useful
 INSERT INTO swapi(body)
@@ -326,7 +323,7 @@ SELECT
 FROM
   swapi
 WHERE
-  body @ > '{"director": "George Lucas"}';
+  body @> '{"director": "George Lucas"}';
 
 -- Try this ... oops - not what we meant
 SELECT
@@ -334,7 +331,7 @@ SELECT
 FROM
   swapi
 WHERE
-  NOT (body @ > '{"director": "George Lucas"}'::jsonb);
+  NOT (body @> '{"director": "George Lucas"}'::jsonb);
 
 -- We can fix that NOT bit with a clever WHERE clause...
 SELECT
@@ -358,7 +355,7 @@ SELECT
 FROM
   swapi
 WHERE
-  NOT (body @ > '{"director": "George Lucas"}'::jsonb)
+  NOT (body @> '{"director": "George Lucas"}'::jsonb)
   AND body ->> 'url' LIKE 'https://swapi.py4e.com/api/films/%';
 
 SELECT
@@ -436,7 +433,7 @@ SELECT
 FROM
   swapi
 WHERE
-  body @ > '{"type": "species"}'
+  body @> '{"type": "species"}'
 LIMIT 10;
 
 EXPLAIN
@@ -446,7 +443,7 @@ SELECT
 FROM
   swapi
 WHERE
-  body @ > '{"type": "species"}'
+  body @> '{"type": "species"}'
 LIMIT 10;
 
 -- The payoff
@@ -455,8 +452,8 @@ SELECT
 FROM
   swapi
 WHERE
-  body @ > '{"type": "films"}'
-  AND NOT (body @ > '{"director": "George Lucas"}');
+  body @> '{"type": "films"}'
+  AND NOT (body @> '{"director": "George Lucas"}');
 
 EXPLAIN
 SELECT
@@ -464,6 +461,6 @@ SELECT
 FROM
   swapi
 WHERE
-  body @ > '{"type": "films"}'
-  AND NOT (body @ > '{"director": "George Lucas"}');
+  body @> '{"type": "films"}'
+  AND NOT (body @> '{"director": "George Lucas"}');
 

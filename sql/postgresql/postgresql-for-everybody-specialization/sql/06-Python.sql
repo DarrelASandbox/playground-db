@@ -45,7 +45,7 @@ SELECT
 FROM
   pg19337
 WHERE
-  to_tsquery('english', 'goose') @ @ to_tsvector('english', body)
+  to_tsquery('english', 'goose') @@ to_tsvector('english', body)
 LIMIT 5;
 
 EXPLAIN ANALYZE
@@ -54,14 +54,14 @@ SELECT
 FROM
   pg19337
 WHERE
-  to_tsquery('english', 'goose') @ @ to_tsvector('english', body);
+  to_tsquery('english', 'goose') @@ to_tsvector('english', body);
 
 SELECT
   count(body)
 FROM
   pg19337
 WHERE
-  to_tsquery('english', 'tiny <-> tim') @ @ to_tsvector('english', body);
+  to_tsquery('english', 'tiny <-> tim') @@ to_tsvector('english', body);
 
 EXPLAIN ANALYZE
 SELECT
@@ -69,7 +69,7 @@ SELECT
 FROM
   pg19337
 WHERE
-  to_tsquery('english', 'tiny <-> tim') @ @ to_tsvector('english', body)
+  to_tsquery('english', 'tiny <-> tim') @@ to_tsvector('english', body)
 LIMIT 5;
 
 -- Using a natural language index on an email corpus
@@ -100,14 +100,14 @@ SELECT
 
 SELECT
   id,
-  to_tsquery('english', 'neon') @ @ to_tsvector('english', body)
+  to_tsquery('english', 'neon') @@ to_tsvector('english', body)
 FROM
   messages
 LIMIT 10;
 
 SELECT
   id,
-  to_tsquery('english', 'easier') @ @ to_tsvector('english', body)
+  to_tsquery('english', 'easier') @@ to_tsvector('english', body)
 FROM
   messages
 LIMIT 10;
@@ -127,7 +127,7 @@ SELECT
 FROM
   messages
 WHERE
-  to_tsquery('english', 'monday') @ @ to_tsvector('english', body)
+  to_tsquery('english', 'monday') @@ to_tsvector('english', body)
 LIMIT 10;
 
 EXPLAIN ANALYZE
@@ -137,7 +137,7 @@ SELECT
 FROM
   messages
 WHERE
-  to_tsquery('english', 'monday') @ @ to_tsvector('english', body);
+  to_tsquery('english', 'monday') @@ to_tsvector('english', body);
 
 -- We did not make a Spanish index
 EXPLAIN ANALYZE
@@ -147,7 +147,7 @@ SELECT
 FROM
   messages
 WHERE
-  to_tsquery('spanish', 'monday') @ @ to_tsvector('spanish', body);
+  to_tsquery('spanish', 'monday') @@ to_tsvector('spanish', body);
 
 DROP INDEX messages_gin;
 
@@ -162,7 +162,7 @@ SELECT
 FROM
   messages
 WHERE
-  to_tsquery('english', 'monday') @ @ to_tsvector('english', body);
+  to_tsquery('english', 'monday') @@ to_tsvector('english', body);
 
 EXPLAIN ANALYZE
 SELECT
@@ -171,7 +171,7 @@ SELECT
 FROM
   messages
 WHERE
-  to_tsquery('english', 'monday') @ @ to_tsvector('english', body);
+  to_tsquery('english', 'monday') @@ to_tsvector('english', body);
 
 -- https://www.postgresql.org/docs/current/functions-textsearch.html
 SELECT
@@ -181,7 +181,7 @@ SELECT
 FROM
   messages
 WHERE
-  to_tsquery('english', 'personal & learning') @ @ to_tsvector('english', body);
+  to_tsquery('english', 'personal & learning') @@ to_tsvector('english', body);
 
 SELECT
   id,
@@ -190,7 +190,7 @@ SELECT
 FROM
   messages
 WHERE
-  to_tsquery('english', 'learning & personal') @ @ to_tsvector('english', body);
+  to_tsquery('english', 'learning & personal') @@ to_tsvector('english', body);
 
 -- Both words but in order
 SELECT
@@ -200,7 +200,7 @@ SELECT
 FROM
   messages
 WHERE
-  to_tsquery('english', 'personal <-> learning') @ @ to_tsvector('english', body);
+  to_tsquery('english', 'personal <-> learning') @@ to_tsvector('english', body);
 
 SELECT
   id,
@@ -209,7 +209,7 @@ SELECT
 FROM
   messages
 WHERE
-  to_tsquery('english', 'learning <-> personal') @ @ to_tsvector('english', body);
+  to_tsquery('english', 'learning <-> personal') @@ to_tsvector('english', body);
 
 SELECT
   id,
@@ -218,7 +218,7 @@ SELECT
 FROM
   messages
 WHERE
-  to_tsquery('english', '! personal & learning') @ @ to_tsvector('english', body);
+  to_tsquery('english', '! personal & learning') @@ to_tsvector('english', body);
 
 -- plainto_tsquery() Is tolerant of "syntax errors" in the expression
 SELECT
@@ -228,7 +228,7 @@ SELECT
 FROM
   messages
 WHERE
-  to_tsquery('english', '(personal learning') @ @ to_tsvector('english', body);
+  to_tsquery('english', '(personal learning') @@ to_tsvector('english', body);
 
 SELECT
   id,
@@ -237,7 +237,7 @@ SELECT
 FROM
   messages
 WHERE
-  plainto_tsquery('english', '(personal learning') @ @ to_tsvector('english', body);
+  plainto_tsquery('english', '(personal learning') @@ to_tsvector('english', body);
 
 -- phraseto_tsquery() implies followed by
 SELECT
@@ -247,7 +247,7 @@ SELECT
 FROM
   messages
 WHERE
-  to_tsquery('english', 'I <-> think') @ @ to_tsvector('english', body);
+  to_tsquery('english', 'I <-> think') @@ to_tsvector('english', body);
 
 SELECT
   id,
@@ -256,7 +256,7 @@ SELECT
 FROM
   messages
 WHERE
-  phraseto_tsquery('english', 'I think') @ @ to_tsvector('english', body);
+  phraseto_tsquery('english', 'I think') @@ to_tsvector('english', body);
 
 -- websearch_to_tsquery is in PostgreSQL > 11
 SELECT
@@ -266,7 +266,7 @@ SELECT
 FROM
   messages
 WHERE
-  to_tsquery('english', '! personal & learning') @ @ to_tsvector('english', body);
+  to_tsquery('english', '! personal & learning') @@ to_tsvector('english', body);
 
 SELECT
   id,
@@ -275,7 +275,7 @@ SELECT
 FROM
   messages
 WHERE
-  websearch_to_tsquery('english', '-personal learning') @ @ to_tsvector('english', body)
+  websearch_to_tsquery('english', '-personal learning') @@ to_tsvector('english', body)
 LIMIT 10;
 
 -- https://www.postgresql.org/docs/12/textsearch-controls.html#TEXTSEARCH-RANKING
@@ -287,7 +287,7 @@ SELECT
 FROM
   messages
 WHERE
-  to_tsquery('english', 'personal & learning') @ @ to_tsvector('english', body)
+  to_tsquery('english', 'personal & learning') @@ to_tsvector('english', body)
 ORDER BY
   ts_rank DESC;
 
@@ -300,7 +300,7 @@ SELECT
 FROM
   messages
 WHERE
-  to_tsquery('english', 'personal & learning') @ @ to_tsvector('english', body)
+  to_tsquery('english', 'personal & learning') @@ to_tsvector('english', body)
 ORDER BY
   ts_rank DESC;
 
@@ -351,7 +351,8 @@ FROM
   messages;
 
 -- A variable - actually more like a macro - escaping is tricky
-SET zap 'substring(headers, \'\\nFrom: [^\\n]*<([^>]*)\')' DROP INDEX messages_from;
+\set zap 'substring(headers, \'\\nFrom: [^\\n]*<([^>]*)\')'
+DROP INDEX messages_from;
 
 EXPLAIN ANALYZE
 SELECT
