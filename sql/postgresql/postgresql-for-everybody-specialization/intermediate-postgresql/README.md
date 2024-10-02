@@ -10,10 +10,19 @@
   - [Stored Procedures](#stored-procedures)
 - [Module 2](#module-2)
   - [Normalization](#normalization)
+- [Module 3](#module-3)
 
 # About The Project
 
 - [Intermediate PostgreSQL](https://www.coursera.org/learn/intermediate-postgresql)
+
+```sh
+# Creating temp db
+psql postgres
+# CREATE DATABASE tempdb WITH OWNER 'pg4e' ENCODING 'UTF8';
+\q
+psql -U pg4e tempdb
+```
 
 # Module 1
 
@@ -84,3 +93,7 @@ While stored procedures can provide performance benefits for certain tasks, thes
 - **Additional Table for Raw Data**
   - This approach is often useful when you want to preserve the original, unprocessed data (the “raw data”) while working with a normalized structure. The raw data table acts as a source of truth, allowing for data integrity checks or recreating normalized tables if needed. It’s commonly used in scenarios where data processing or cleansing occurs, and you want to keep the untouched version for future reference or auditing.
 - The choice between these approaches depends on factors like data integrity, performance, and your need for an original data record. For example, in ETL (Extract, Transform, Load) pipelines, raw data tables are common, while traditional database applications often rely solely on linked tables by IDs for efficiency and structure.
+
+# Module 3
+
+- [Chapter 9. Functions and Operators - 9.4. String Functions and Operators](https://www.postgresql.org/docs/17/functions-string.html)
