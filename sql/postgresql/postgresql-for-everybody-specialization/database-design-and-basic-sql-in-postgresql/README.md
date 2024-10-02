@@ -116,7 +116,7 @@ CREATE TABLE users (
 wget https://www.pg4e.com/tools/sql/library.csv
 
 # load it into the track_raw table
-\copy track_raw(title,artist,album,count,rating,len) FROM 'library.csv' WITH DELIMITER ',' CSV;
+\copy track_raw(title,artist,album,count,rating,len) FROM 'csv/library.csv' WITH DELIMITER ',' CSV;
 
 # To grade this assignment, the program will run a query like this on your database
 SELECT title, album FROM track_raw ORDER BY title LIMIT 3;
