@@ -16,14 +16,6 @@
 
 - [Intermediate PostgreSQL](https://www.coursera.org/learn/intermediate-postgresql)
 
-```sh
-# Creating temp db
-psql postgres
-# CREATE DATABASE tempdb WITH OWNER 'pg4e' ENCODING 'UTF8';
-\q
-psql -U pg4e tempdb
-```
-
 # Module 1
 
 ## `TIMESTAMPTZ`
