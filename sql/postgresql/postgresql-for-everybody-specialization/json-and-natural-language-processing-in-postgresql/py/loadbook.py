@@ -11,14 +11,16 @@
 
 # python3 loadbook.py
 
-import psycopg2
-import hidden
+import os
 import time
+
+import hidden
+import psycopg2
 
 bookfile = input("Enter book file (i.e. pg19337.txt): ")
 if bookfile == "":
-    bookfile = "pg19337.txt"
-base = bookfile.split(".")[0]
+    bookfile = "json-and-natural-language-processing-in-postgresql/pg19337.txt"
+base = os.path.basename(bookfile).split(".")[0]
 
 # Make sure we can open the file
 fhand = open(bookfile)

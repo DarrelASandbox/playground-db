@@ -138,6 +138,6 @@ SELECT * FROM documents WHERE tsv_content @@ to_tsquery('quick & fox');
 
 ```sh
 conda activate temp
-python json-and-natural-language-processing-in-postgresql/simple.py
-python json-and-natural-language-processing-in-postgresql/loadbook.py
+python json-and-natural-language-processing-in-postgresql/py/simple.py
+python json-and-natural-language-processing-in-postgresql/py/loadbook.py
 ```
