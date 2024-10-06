@@ -167,6 +167,7 @@ python json-and-natural-language-processing-in-postgresql/py/pyseq.py
 ```sh
 conda activate temp
 python json-and-natural-language-processing-in-postgresql/py/swapi.py
+python json-and-natural-language-processing-in-postgresql/py/pokeapi.py
 ```
 
 ## Understanding PostgreSQL JSONB and Its Comparison to Document Databases
