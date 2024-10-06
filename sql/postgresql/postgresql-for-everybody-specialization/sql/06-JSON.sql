@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS jtrack(
 -- simple JSON without embedded newlines in the JSON values, this is good enough.
 -- http://adpgtech.blogspot.com/2014/09/importing-json-data.html
 -- wget https://www.pg4e.com/code/library.jstxt
-\copy jtrack (body) FROM 'library.jstxt' WITH CSV QUOTE E'\x01' DELIMITER E'\x02';
+\copy jtrack (body) FROM 'json-and-natural-language-processing-in-postgresql/library.jstxt' WITH CSV QUOTE E'\x01' DELIMITER E'\x02';
 SELECT
   *
 FROM

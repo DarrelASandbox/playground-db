@@ -1,7 +1,7 @@
 - [About The Project](#about-the-project)
 - [Module 1](#module-1)
   - [`unnest` Benchmark](#unnest-benchmark)
-  - [EXPLAIN Output for unnest(ARRAY\[generate_series(1, size)\])](#explain-output-for-unnestarraygenerate_series1-size)
+  - [`EXPLAIN` Output for `unnest(ARRAY[generate_series(1, size)])`](#explain-output-for-unnestarraygenerate_series1-size)
 - [Module 2](#module-2)
   - [What is `tsvector`?](#what-is-tsvector)
   - [What is `tsquery`?](#what-is-tsquery)
@@ -9,6 +9,19 @@
   - [Indexing for Performance](#indexing-for-performance)
   - [Practical Use Cases](#practical-use-cases)
 - [Module 3](#module-3)
+  - [`sh`](#sh)
+- [Module 4](#module-4)
+  - [Understanding PostgreSQL JSONB and Its Comparison to Document Databases](#understanding-postgresql-jsonb-and-its-comparison-to-document-databases)
+    - [What is JSONB?](#what-is-jsonb)
+    - [Similarities Between PostgreSQL JSONB and Document Databases](#similarities-between-postgresql-jsonb-and-document-databases)
+      - [Document Storage](#document-storage)
+      - [Flexible Schema](#flexible-schema)
+      - [Rich Query Capabilities](#rich-query-capabilities)
+      - [Indexing](#indexing)
+      - [Data Retrieval and Filtering](#data-retrieval-and-filtering)
+    - [Differences Between PostgreSQL JSONB and Document Databases](#differences-between-postgresql-jsonb-and-document-databases)
+  - [Differences Between PostgreSQL JSONB and Document Databases](#differences-between-postgresql-jsonb-and-document-databases-1)
+    - [Conclusion](#conclusion)
 
 # About The Project
 
@@ -55,7 +68,7 @@ BEGIN
 END $$;
 ```
 
-## EXPLAIN Output for unnest(ARRAY[generate_series(1, size)])
+## `EXPLAIN` Output for `unnest(ARRAY[generate_series(1, size)])`
 
 - For each size, PostgreSQL generates an execution plan, which includes:
   - **ProjectSet**: This is the operation responsible for evaluating generate_series and applying unnest. It shows the estimated cost and row count.
@@ -136,6 +149,8 @@ SELECT * FROM documents WHERE tsv_content @@ to_tsquery('quick & fox');
 
 # Module 3
 
+## `sh`
+
 ```sh
 conda activate temp
 python json-and-natural-language-processing-in-postgresql/py/simple.py
@@ -143,3 +158,59 @@ python json-and-natural-language-processing-in-postgresql/py/loadbook.py
 python json-and-natural-language-processing-in-postgresql/py/gmane.py
 python json-and-natural-language-processing-in-postgresql/py/pyseq.py
 ```
+
+# Module 4
+
+## Understanding PostgreSQL JSONB and Its Comparison to Document Databases
+
+PostgreSQL's JSONB data type enables flexible storage of semi-structured data, resembling the functionality of document-oriented databases like MongoDB. This document explores the similarities, differences, and use cases of PostgreSQL JSONB compared to typical document databases.
+
+### What is JSONB?
+
+- **JSONB (Binary JSON)** is a binary format for storing JSON data in PostgreSQL.
+- Optimized for efficient querying and manipulation of JSON documents.
+- Offers support for indexing and various operators for advanced data handling.
+
+### Similarities Between PostgreSQL JSONB and Document Databases
+
+#### Document Storage
+
+- Both PostgreSQL JSONB and document databases store structured data in key-value pairs, arrays, and nested objects.
+
+#### Flexible Schema
+
+- No fixed schema is required, allowing varying document structures.
+
+#### Rich Query Capabilities
+
+- **PostgreSQL**: Provides operators like `->`, `->>`, `@>`, and functions such as `jsonb_set`.
+- **MongoDB**: Uses operators like `$elemMatch`, `$exists`, and `$size`.
+
+#### Indexing
+
+- PostgreSQL supports **GIN (Generalized Inverted Index)** for JSONB fields.
+- Document databases support indexes on nested fields, compound keys, and text.
+
+#### Data Retrieval and Filtering
+
+- Both allow querying specific fields or nested keys efficiently.
+
+### Differences Between PostgreSQL JSONB and Document Databases
+
+## Differences Between PostgreSQL JSONB and Document Databases
+
+| Feature                        | PostgreSQL JSONB                                  | Document Databases (e.g., MongoDB)       |
+| ------------------------------ | ------------------------------------------------- | ---------------------------------------- |
+| **Primary Data Model**         | Relational (tables, rows, columns)                | Document-based                           |
+| **Schema Enforcement**         | Relational schema with JSONB fields               | Completely schema-less                   |
+| **Query Language**             | SQL with JSONB-specific operators                 | BSON-based query language (NoSQL style)  |
+| **Performance**                | Optimized but slower for pure document operations | Optimized for document workloads         |
+| **Transactions**               | Fully ACID-compliant, supports multi-table        | ACID-compliant (from version 4.0)        |
+| **Indexing**                   | GIN indexes for JSONB fields                      | Field-level and compound indexes         |
+| **Scalability**                | Supports horizontal scaling with effort           | Built-in horizontal scaling and sharding |
+| **Clustering and Replication** | Streaming replication and clustering available    | Native sharding and replication          |
+| **Use Case Fit**               | Hybrid (relational + document storage)            | Pure document-based applications         |
+
+### Conclusion
+
+PostgreSQL JSONB bridges the gap between relational and document databases, making it ideal for hybrid workloads. While it provides many features of document databases, specialized systems like MongoDB excel in pure document-based use cases. The choice between them depends on specific application requirements, including data model, scalability needs, and performance considerations.
