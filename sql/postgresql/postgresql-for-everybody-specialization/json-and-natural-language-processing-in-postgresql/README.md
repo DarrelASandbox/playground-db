@@ -11,6 +11,7 @@
 - [Module 3](#module-3)
   - [`sh`](#sh)
 - [Module 4](#module-4)
+  - [`sh`](#sh-1)
   - [Understanding PostgreSQL JSONB and Its Comparison to Document Databases](#understanding-postgresql-jsonb-and-its-comparison-to-document-databases)
     - [What is JSONB?](#what-is-jsonb)
     - [Similarities Between PostgreSQL JSONB and Document Databases](#similarities-between-postgresql-jsonb-and-document-databases)
@@ -160,6 +161,13 @@ python json-and-natural-language-processing-in-postgresql/py/pyseq.py
 ```
 
 # Module 4
+
+## `sh`
+
+```sh
+conda activate temp
+python json-and-natural-language-processing-in-postgresql/py/swapi.py
+```
 
 ## Understanding PostgreSQL JSONB and Its Comparison to Document Databases
 
