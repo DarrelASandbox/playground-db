@@ -23,8 +23,11 @@
     - [When to Use ACID](#when-to-use-acid)
     - [When to Use BASE](#when-to-use-base)
     - [Conclusion](#conclusion-1)
-- [To Multi-Master or not to Multi-Master - that is the question](#to-multi-master-or-not-to-multi-master---that-is-the-question)
-  - [Position: In Favor of Switching to a Multi-Master Approach](#position-in-favor-of-switching-to-a-multi-master-approach)
+  - [To Multi-Master or not to Multi-Master - that is the question](#to-multi-master-or-not-to-multi-master---that-is-the-question)
+    - [Position: In Favor of Switching to a Multi-Master Approach](#position-in-favor-of-switching-to-a-multi-master-approach)
+- [Module 2](#module-2)
+  - [On ACID and BASE Architectures](#on-acid-and-base-architectures)
+    - [ACID vs. BASE: The Eternal Tug-of-War](#acid-vs-base-the-eternal-tug-of-war)
 
 # About The Project
 
@@ -270,13 +273,13 @@ In database systems, two key models define the trade-offs between consistency, a
 
 The choice between **ACID** and **BASE** depends on the specific needs of your application. While ACID provides robust data consistency and reliability, BASE offers flexibility and scalability for high-availability systems. Understanding their differences is crucial for designing efficient, resilient databases tailored to your use case.
 
-# To Multi-Master or not to Multi-Master - that is the question
+## To Multi-Master or not to Multi-Master - that is the question
 
 Your organization is reaching the limits of its relational database application as it scales and you are in meeting to decide to move to a multi-master approach or not. Expanding the size of the single-master instance is quite expensive and requires a long-term contract. The multi-master approach is much less expensive and can use commodity hardware. Take a position for or against the switch to multi-master proposal. Write 3-5 paragraphs and share your reasoning on the position you have taken. Feel free to bring prior experience that you might have into the conversation. Feel free to now more than the instructor on this topic :) Let's see what we can learn from talking and listening to each other's perspectives. The primary goal is to have a conversation.
 
 Don't take off points for little mistakes. If they seem to have done the assignment give them full credit. Feel free to make suggestions if there are small mistakes. Please keep your comments positive and useful. If you do not take grading seriously, the instructors may delete your response and you will lose points.
 
-## Position: In Favor of Switching to a Multi-Master Approach
+### Position: In Favor of Switching to a Multi-Master Approach
 
 The multi-master approach offers significant advantages, particularly for organizations that are scaling beyond the limits of their current single-master relational database. One of the primary benefits of a multi-master setup is its ability to distribute both read and write operations across multiple nodes. This distribution improves system availability, reduces the risk of bottlenecks, and ensures high uptime. Furthermore, because it can run on commodity hardware, a multi-master system provides a cost-effective solution compared to the substantial costs and contractual obligations tied to expanding a single-master instance.
 
@@ -285,3 +288,23 @@ Multi-master databases excel in scenarios where scalability, fault tolerance, an
 From a financial perspective, understanding the organization’s budget and whether database costs can be passed on to clients is crucial. If the database is solely a cost to the organization, a multi-master approach might provide a more budget-friendly alternative due to its reliance on cheaper hardware and open-source solutions. However, if clients or stakeholders expect high availability and low latency, the enhanced performance provided by multi-master setups may justify the investment. Additionally, assessing the long-term duration of the project is essential; if the application is expected to grow and serve a larger user base over time, the scalability of multi-master systems becomes an invaluable asset.
 
 That said, it’s essential to evaluate whether the organization can sustain its operations without this shift. The risks of not adopting a multi-master system include potential performance degradation, increased latency, and higher likelihood of downtime due to the single point of failure in a single-master architecture. These risks could lead to client dissatisfaction, revenue loss, and damage to the organization’s reputation. While transitioning to a multi-master system requires careful planning, testing, and potential refactoring of the application, the long-term benefits—both technical and financial—make it a viable and forward-thinking choice for scaling operations effectively.
+
+# Module 2
+
+## On ACID and BASE Architectures
+
+The topic for this week is to compare, contrast, and explore the interplay between ACID and BASE style architectures. In this mini-paper (3-5 paragraphs) explain your take or views on these competing approaches to database architecture. Feel free to bring prior experience that you might have into the conversation. It is quite OK to take and support a position that is different from the position in this week's lectures. Let's see what we can learn from talking and listening to each other's perspectives. The main goal is to have a conversation.
+
+Don't take off points for little mistakes. Feel free to make suggestions if there are small mistakes. Please keep your comments positive and useful. Provide comments that will help us all think about the question that is posed. Some of the points will be given by the instructors - it might take a while for the instructor points to appear.
+
+### ACID vs. BASE: The Eternal Tug-of-War
+
+ACID (Atomicity, Consistency, Isolation, Durability) and BASE (Basically Available, Soft-state, Eventually consistent) are paradigms on opposite ends of the database spectrum. ACID is ideal for transactional systems like banking, where data integrity is critical, while BASE excels in high-availability systems such as social media or e-commerce, where speed and scale trump immediate consistency. The key difference lies in the trade-off between consistency and availability, especially in distributed systems.
+
+ACID ensures strict data integrity and is straightforward to reason about, but it suffers from limited scalability and higher latencies, making it less suitable for modern distributed architectures. Conversely, BASE offers high performance and availability at massive scales but sacrifices strong consistency, which can lead to user confusion (“Why does my post show up for me but not my friend?”). ACID systems are often easier to debug, while BASE systems require a deeper understanding of eventual consistency and conflict resolution strategies.
+
+ACID systems typically require costly hardware to maintain performance under high transactional loads and are challenging to scale horizontally. BASE, on the other hand, thrives on commodity hardware, minimizing infrastructure costs. However, the operational complexity of BASE (e.g., implementing conflict resolution or eventual consistency checks) can drive up engineering costs. For small-to-midsize businesses, ACID is manageable, but at web-scale (think Netflix or Amazon), BASE becomes the only viable option.
+
+For future-proofing, the choice often depends on anticipated growth. An ACID-first approach is suitable for systems with manageable growth or stringent consistency needs. For rapidly scaling applications, adopting BASE early avoids costly migrations later. A hybrid approach, using BASE for high-traffic components and ACID for critical data, can provide a balanced path forward.
+
+Of course, the biggest constraint is the budget, followed closely by resistance from stakeholders who fear the complexity of BASE or the “over-engineering” of ACID. Convincing a business team to prioritize system resiliency over “just ship it” timelines can feel like trying to push a camel through the eye of a needle. At the end of the day, the database architecture is often less about technical superiority and more about which side wins the budget battle!
