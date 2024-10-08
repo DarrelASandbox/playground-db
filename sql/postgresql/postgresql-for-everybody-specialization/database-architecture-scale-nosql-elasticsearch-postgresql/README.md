@@ -314,6 +314,7 @@ Of course, the biggest constraint is the budget, followed closely by resistance 
 # Module 3
 
 - [email list](https://mbox.dr-chuck.net/sakai.devel/4/5)
+- [pg20203](https://www.pg4e.com/gutenberg/cache/epub/20203/pg20203.txt)
 
 ## `sh`
 
@@ -322,4 +323,12 @@ conda activate temp
 python database-architecture-scale-nosql-elasticsearch-postgresql/py/elastictool.py
 python database-architecture-scale-nosql-elasticsearch-postgresql/py/elasticmail.py
 python database-architecture-scale-nosql-elasticsearch-postgresql/py/elastictweet.py
+python database-architecture-scale-nosql-elasticsearch-postgresql/py/elasticbook.py
+# database-architecture-scale-nosql-elasticsearch-postgresql/pg20203.txt
+# Index refreshed pg4e_641a0552b5
+# {'_shards': {'total': 2, 'successful': 1, 'failed': 0}}
+#
+# Loaded 987 paragraphs 8561 lines 446409 characters
+#
+# Enter command: search pennsylvania
 ```

@@ -38,17 +38,37 @@ res = es.indices.create(index=indexname)
 print("Created the index...")
 print(res)
 
-doc = {
-    "author": "kimchy",
-    "type": "tweet",
-    "text": "Elasticsearch: cool. bonsai cool.",
-    "timestamp": datetime.now(),
-}
+chunks = [
+    "your source code from a file it knows to stop when it reaches the end",
+    "What is a program",
+    "The definition of a program at its most basic is a",
+    "sequence of Python statements that have been crafted to do something",
+    "Even our simple hellopy script is a program It is a",
+]
+
+# Loop to index each chunk as a separate document
+for i, chunk in enumerate(chunks, start=1):
+    doc = {
+        "author": f"author_{i}",
+        "type": "text_chunk",
+        "text": chunk,
+        "timestamp": datetime.now(),
+    }
+    res = es.index(index=indexname, id=f"doc_{i}", body=doc)
+    print(f"Added document {i}...")
+    print(res["result"])
+
+# doc = {
+#     "author": "kimchy",
+#     "type": "tweet",
+#     "text": "Elasticsearch: cool. bonsai cool.",
+#     "timestamp": datetime.now(),
+# }
 
 # Note - you can't change the key type after you start indexing documents
-res = es.index(index=indexname, id="abc", body=doc)
-print("Added document...")
-print(res["result"])
+# res = es.index(index=indexname, id="abc", body=doc)
+# print("Added document...")
+# print(res["result"])
 
 res = es.get(index=indexname, id="abc")
 print("Retrieved document...")
