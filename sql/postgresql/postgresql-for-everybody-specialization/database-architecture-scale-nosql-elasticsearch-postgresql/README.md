@@ -28,6 +28,8 @@
 - [Module 2](#module-2)
   - [On ACID and BASE Architectures](#on-acid-and-base-architectures)
     - [ACID vs. BASE: The Eternal Tug-of-War](#acid-vs-base-the-eternal-tug-of-war)
+- [Module 3](#module-3)
+  - [`sh`](#sh)
 
 # About The Project
 
@@ -308,3 +310,16 @@ ACID systems typically require costly hardware to maintain performance under hig
 For future-proofing, the choice often depends on anticipated growth. An ACID-first approach is suitable for systems with manageable growth or stringent consistency needs. For rapidly scaling applications, adopting BASE early avoids costly migrations later. A hybrid approach, using BASE for high-traffic components and ACID for critical data, can provide a balanced path forward.
 
 Of course, the biggest constraint is the budget, followed closely by resistance from stakeholders who fear the complexity of BASE or the “over-engineering” of ACID. Convincing a business team to prioritize system resiliency over “just ship it” timelines can feel like trying to push a camel through the eye of a needle. At the end of the day, the database architecture is often less about technical superiority and more about which side wins the budget battle!
+
+# Module 3
+
+- [email list](https://mbox.dr-chuck.net/sakai.devel/4/5)
+
+## `sh`
+
+```sh
+conda activate temp
+python database-architecture-scale-nosql-elasticsearch-postgresql/py/elastictool.py
+python database-architecture-scale-nosql-elasticsearch-postgresql/py/elasticmail.py
+python database-architecture-scale-nosql-elasticsearch-postgresql/py/elastictweet.py
+```
