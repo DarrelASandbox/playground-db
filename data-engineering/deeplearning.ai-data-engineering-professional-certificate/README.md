@@ -22,6 +22,8 @@
 3. [Data Storage and Queries](https://www.coursera.org/learn/data-storage-and-queries)
 4. [Data Modeling, Transformation, and Serving](https://www.coursera.org/learn/data-modeling-transformation-serving)
 
+- [Resources](https://community.deeplearning.ai/c/course-q-a/data-engineering-specialization/de-resources/471)
+
 # Program Syllabus
 
 ## What is this program about?
