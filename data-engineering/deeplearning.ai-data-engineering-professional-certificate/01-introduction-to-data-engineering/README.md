@@ -1,10 +1,3 @@
-- [About The Project](#about-the-project)
-- [Plan for Course 1](#plan-for-course-1)
-  - [Week 1](#week-1)
-  - [Week 2](#week-2)
-  - [Week 3](#week-3)
-  - [Week 4](#week-4)
-
 # About The Project
 
 - [Introduction to Data Engineering](https://www.coursera.org/learn/intro-to-data-engineering)
