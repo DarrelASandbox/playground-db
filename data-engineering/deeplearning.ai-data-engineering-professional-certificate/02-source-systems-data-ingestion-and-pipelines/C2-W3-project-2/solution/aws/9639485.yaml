@@ -1,0 +1,36 @@
+name: de-c2w3a1-checkpoint-trips-1739240656.9639485
+config_version: 1.0
+template_name:
+module_name: great_expectations.checkpoint
+class_name: Checkpoint
+run_name_template: trips %Y-%m-%d %H:%M:%S
+expectation_suite_name: de-c2w3a1-expectation-suite-trips-taxi-db
+batch_request: {}
+action_list:
+  - name: store_validation_result
+    action:
+      class_name: StoreValidationResultAction
+  - name: update_data_docs
+    action:
+      class_name: UpdateDataDocsAction
+evaluation_parameters: {}
+runtime_configuration: {}
+validations:
+  - batch_request:
+      datasource_name: de-c2w3a1-db-datasource
+      data_asset_name: de-c2w3a1-trips
+      options: {}
+    expectation_suite_name: de-c2w3a1-expectation-suite-trips-taxi-db
+  - batch_request:
+      datasource_name: de-c2w3a1-db-datasource
+      data_asset_name: de-c2w3a1-trips
+      options: {}
+    expectation_suite_name: de-c2w3a1-expectation-suite-trips-taxi-db
+  - batch_request:
+      datasource_name: de-c2w3a1-db-datasource
+      data_asset_name: de-c2w3a1-trips
+      options: {}
+    expectation_suite_name: de-c2w3a1-expectation-suite-trips-taxi-db
+profilers: []
+ge_cloud_id:
+expectation_suite_ge_cloud_id:
