@@ -156,7 +156,7 @@ try:
             WHEN MATCHED 
                     THEN UPDATE SET 
                         t1.productrating = t2.productrating,
-                        t1.ingest_ts = t2.ingest_ts
+                        t1.ingest_ts = t2.ingest_ts,
                         t1.ratingtimestamp = t2.ratingtimestamp
             WHEN NOT MATCHED THEN INSERT *
             """
